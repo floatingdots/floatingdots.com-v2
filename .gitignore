@@ -8,3 +8,5 @@
 /lerna-debug.log
 
 .env*
+
+.now

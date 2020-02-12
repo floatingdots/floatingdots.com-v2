@@ -1,0 +1,4 @@
+/studio
+/cdn
+.env*
+/web/public

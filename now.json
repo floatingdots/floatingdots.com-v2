@@ -1,0 +1,35 @@
+{
+  "name": "floatingdots",
+  "version": 2,
+  "public": false,
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  },
+  "builds": [
+    { "src": "/web/package.json", "use": "@now/static-build" },
+    { "src": "/web/api/schedulePost.js", "use": "@now/node" }
+  ],
+  "build": {
+    "env": {
+      "SANITY_READ_TOKEN": "@fd-sanity-read-token",
+      "AIRTABLE_APIKEY": "@airtable-apikey"
+    }
+  },
+  "env": {
+    "AIRTABLE_APIKEY": "@airtable-apikey"
+  },
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/web/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/web/404.html"
+    }
+  ],
+  "redirects": [
+  ]
+}

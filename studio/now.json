@@ -1,0 +1,14 @@
+{
+  "name": "foatingdots-studio",
+  "version": 2,
+  "scope": "floatingdots",
+  "public": false,
+  "github": {
+    "enabled": true,
+    "autoAlias": false
+  },
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}

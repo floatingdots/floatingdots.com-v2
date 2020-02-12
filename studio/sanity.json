@@ -1,0 +1,56 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "i3meyrpy",
+    "dataset": "production"
+  },
+  "project": {
+    "name": "Floating Dots"
+  },
+  "__experimental_spaces": [
+    {
+      "title": "Production",
+      "name": "production",
+      "default": true,
+      "api": {
+        "dataset": "production",
+        "projectId": "i3meyrpy"
+      }
+    },
+    {
+      "title": "Dev",
+      "name": "dev",
+      "api": {
+        "dataset": "dev",
+        "projectId": "i3meyrpy"
+      }
+    }
+  ],
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/dashboard",
+    "@sanity/desk-tool",
+    "dashboard-widget-structure-menu",
+    "dashboard-widget-document-list",
+    "dashboard-widget-netlify",
+    "google-analytics",
+    "@sanity/vision"
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "dashboardConfig.js"
+    }
+  ]
+}

@@ -12,9 +12,10 @@ export default {
       options: {collapsible: false}
     }
   ],
-  fields: langs.map(lang => ({
+  fields: langs.map((lang, rows) => ({
     title: lang.title,
     name: lang.id,
-    type: 'text'
+    type: 'text',
+    rows: 5
   }))
 }

@@ -10,6 +10,11 @@ export default {
       title: 'Title'
     },
     {
+      name: 'homeIntro',
+      type: 'localeText',
+      title: 'Home Intro'
+    },
+    {
       name: 'description',
       type: 'localeText',
       title: 'Description',
@@ -25,16 +30,6 @@ export default {
       type: 'mainImage',
       title: 'SNS用画像',
       description: 'SNS共有などで利用するデフォルト画像'
-    },
-    {
-      name: 'keywords',
-      type: 'array',
-      title: 'Keywords',
-      description: 'Add keywords that describes your blog.',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags'
-      }
     }
   ]
 }

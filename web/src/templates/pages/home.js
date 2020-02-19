@@ -16,6 +16,7 @@ import Container from '../../components/layout/container'
 import SEO from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
+import Divider from '../../components/shared/divider'
 import Intro from '../../components/Home/intro'
 // import NewsPreviewList from '../../components/home/news-preview-list'
 
@@ -90,17 +91,16 @@ const IndexPage = props => {
       <SEO
         title={site.title}
         description={site.description.locale}
-        // keywords={site.keywords}
       />
-      <Container>
-        <Intro intro={site.homeIntro.locale} />
-        {/* {newsNodes && (
+      <Intro intro={site.homeIntro.locale} />
+      <Divider />
+      {/* {newsNodes && (
           <NewsPreviewList
             nodes={newsNodes}
           />
         )} */}
 
-        {/* {about && (
+      {/* {about && (
           <AboutPreview
             title={about.title}
             titleEn={about.titleEn}
@@ -109,7 +109,6 @@ const IndexPage = props => {
           />
         )} */}
 
-      </Container>
     </Layout>
   )
 }

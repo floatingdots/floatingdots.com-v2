@@ -30,11 +30,14 @@ const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   transition: all 0.2s;
+  @media (min-width: 768px) {
+    padding: 0 32px;
+  }
 `
 
 const Logo = styled.img`
   width: auto;
-  margin: 0 0 0;
+  margin: 0;
 `
 
 const StyledLink = styled(props => <Link {...props} />)`

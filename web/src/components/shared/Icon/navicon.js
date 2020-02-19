@@ -17,7 +17,7 @@ const Icon = styled.button`
     width: 24px;
     height: 1px;
     position: absolute;
-    background: ${colors.white};
+    background: ${colors.black};
     transition: all 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     border-radius: 4px;
     }
@@ -33,16 +33,13 @@ const Icon = styled.button`
     width: 24px;
     height: 1px;
     position: absolute;
-    background: ${colors.white};
+    background: ${colors.black};
     transition: all 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     border-radius: 4px;
   }
   &.close:after{
     transform: rotate(45deg);
     bottom: 23px;
-  }
-  @media (min-width: 1024px) {
-    display: none;
   }
 `
 

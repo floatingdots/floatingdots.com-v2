@@ -1,22 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
-import {buildImageObj, cn} from '../../lib/helpers'
-import {imageUrlFor} from '../../lib/image-url'
-import PortableText from '../shared/portableText'
 import {colors, font, fontfamily} from '../../lib/variables'
 
 import Rotation from '../Home/rotation'
 
 const Heading = styled.span`
   display: block;
-  margin: 4.8rem 0 0 0;
+  margin: 6.4rem 0 0 0;
   letter-spacing: 0.05rem;
+  color: ${colors.black};
+  @media (min-width: 768px) {
+    margin: 12.8rem 0 0 0;
+  }
+
 `
 const Top = styled.span`
   display: block;
   line-height: 1;
   font-size: 2.6rem;
   font-weight: 700;
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 `
 const Bottom = styled.span`
   display: block;
@@ -26,6 +31,9 @@ const Bottom = styled.span`
   font-weight: 700;
   display: flex;
   flex-direction: row;
+  @media (min-width: 768px) {
+    font-size: 8rem;
+  }
 `
 
 const Your = styled.span`
@@ -37,9 +45,16 @@ const Your = styled.span`
 
 const Title = styled.h1`
   /* +font-mobile-base; */
+  font-size: 1.6rem;
+  font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 5.6rem;
+  margin: 0.8rem 0 5.6rem 0;
   white-space: pre-line;
+  @media (min-width: 768px) {
+    margin-top: 2.4rem;
+    font-size: 2rem;
+  }
+
 `
 
 const Intro = props => {

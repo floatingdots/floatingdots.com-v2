@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     line-height: 1.5;
     overflow-x: hidden;
+    background: #fafafa;
   }
 
   /* Remove list styles on ul, ol elements with a class attribute */
@@ -123,19 +124,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   margin: 0 auto;
   max-width: 1024px;
-  background: #fff;
-  margin-top: 80px;
+  min-height: 60vh;
+  padding: 64px 16px 0;
   @media (min-width: 768px) {
-    margin-top: 120px;
-  }
-  @media (min-width: 1024px) {
-    padding: 0 0 8rem 0;
-  }
-  &.home{
-    margin-top: 0;
+    padding: 64px 32px 0;
   }
 `
 

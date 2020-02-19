@@ -12,7 +12,7 @@ export const spacing = {
 export const colors = {
   white: '#FFFFFF',
   black: '#231F20',
-  ligthBlack: '#303037',
+  lightBlack: '#303037',
   blue: '#133EFF', // 0043ff
   red: '#FF5A5F',
   green: '#A9DEAC'

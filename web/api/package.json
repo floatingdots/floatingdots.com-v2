@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.8.1",
+    "axios": "^0.19.2",
+    "date-fns": "^2.9.0"
+  }
+}

@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
-import {colors, font, fontfamily} from '../../lib/variables'
 
 import Icon from '../shared/Icon/'
+import i18next from 'i18next'
+
+import {useTranslation} from 'react-i18next'
 import LangSwitcher from '../shared/langSwitcher'
-import logoSvg from '../../../static/logo/logo_header.min.svg'
 
 const Wrapper = styled.header`
   position: fixed;
@@ -22,9 +23,9 @@ const Wrapper = styled.header`
 
 const Inner = styled.div`
   width: 100%;
-  max-width: $mainWidth;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 0 $spacing-mobile;
+  padding: 0 16px;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -33,7 +34,7 @@ const Inner = styled.div`
 
 const Logo = styled.img`
   width: auto;
-  margin: 2px 0 0 0;
+  margin: 0 0 0;
 `
 
 const StyledLink = styled(props => <Link {...props} />)`
@@ -42,16 +43,18 @@ const StyledLink = styled(props => <Link {...props} />)`
   align-items: center;
 `
 
-const Header = ({onHideNav, onShowNav, showNav, path}) => (
-  <Wrapper>
-    <Inner>
-      <StyledLink to='/' title='Floating Dots'>
-        <Logo src='/logo/logo_header.min.svg' />
-      </StyledLink>
-      <LangSwitcher />
-      {/* <Icon symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} /> */}
-    </Inner>
-  </Wrapper>
-)
+const Header = ({onHideNav, onShowNav, showNav, path}) => {
+  const {i18n} = useTranslation()
+  return (
+    <Wrapper>
+      <Inner>
+        <StyledLink to={i18n.language !== 'en' ? `/${i18n.language}` : '/'} title='Floating Dots'>
+          <Logo src='/logo/logo_header.min.svg' />
+        </StyledLink>
+        <Icon symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} />
+      </Inner>
+    </Wrapper>
+  )
+}
 
 export default Header

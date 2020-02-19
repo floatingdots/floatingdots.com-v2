@@ -9,6 +9,7 @@ export function wrapWithI18nProvider ({element, props}) {
   const i18n = i18next
     .createInstance({
       lng: props.pageContext.language,
+      fallbackLng: 'en',
       interpolation: {escapeValue: false},
       initImmediate: false,
       resources: props.pageContext.i18nResources

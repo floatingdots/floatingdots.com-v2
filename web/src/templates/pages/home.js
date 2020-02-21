@@ -3,22 +3,17 @@ import {graphql} from 'gatsby'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture,
-  filterOutDocsLiveDateInThePast,
-  filterOutDocsDraft,
-  buildImageObj
+  filterOutDocsPublishedInTheFuture
 } from '../../lib/helpers'
-import {imageUrlFor} from '../../lib/image-url'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import PortableText from '../../components/shared/portableText'
-import Container from '../../components/layout/container'
 import SEO from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
 import Divider from '../../components/shared/divider'
 import Intro from '../../components/Home/intro'
-// import NewsPreviewList from '../../components/home/news-preview-list'
+import ProjectsList from '../../components/Home/projects-list'
+import WeLove from '../../components/Home/weLove'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -43,7 +38,7 @@ export const query = graphql`
     }
   }
 
-  query IndexPageQuery( $language: String) {
+  query IndexPageQuery( $language: String!, $currentDatetime: Date!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       homeIntro{
@@ -57,7 +52,30 @@ export const query = graphql`
         alt
       }
     }
-
+    projects: allSanityProjects(
+      limit: 5
+      sort: { fields: [publishedAt], order: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
+    ) {
+      edges {
+        node {
+          title{
+            locale(language: $language)
+          }
+          publishedAt
+          slug{
+            current
+          }
+          mainImage{
+            asset {
+              fluid(maxWidth: 1024) {
+                ...GatsbySanityImageFluid_withWebp_noBase64
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
 
@@ -72,19 +90,11 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
-
-  // const newsNodes = (data || {}).news
-  //   ? mapEdgesToNodes(data.news)
-  //     // .filter(filterOutDocsDraft)
-  //     .filter(filterOutDocsWithoutSlugs)
-  //     .filter(filterOutDocsPublishedInTheFuture)
-  //   : []
-
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    )
-  }
+  const projectsNode = (data || {}).projects
+    ? mapEdgesToNodes(data.projects)
+      .filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture)
+    : []
 
   return (
     <Layout isHome>
@@ -94,20 +104,14 @@ const IndexPage = props => {
       />
       <Intro intro={site.homeIntro.locale} />
       <Divider />
-      {/* {newsNodes && (
-          <NewsPreviewList
-            nodes={newsNodes}
-          />
-        )} */}
-
-      {/* {about && (
-          <AboutPreview
-            title={about.title}
-            titleEn={about.titleEn}
-            mainImage={about.mainImage}
-            _rawExcerpt={about._rawExcerpt}
-          />
-        )} */}
+      {projectsNode && (
+        <ProjectsList
+          nodes={projectsNode}
+        />
+      )}
+      <Divider />
+      <WeLove />
+      <Divider />
 
     </Layout>
   )

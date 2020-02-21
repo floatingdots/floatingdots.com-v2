@@ -25,6 +25,10 @@ export function getNewsUrl (publishedAt, slug) {
   return `/news/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 
+export function getProjectsUrl (slug, locale) {
+  return locale === 'en' ? `/projects/${slug.current || slug}/` : `/${locale}/projects/${slug.current || slug}/`
+}
+
 export function buildImageObj (source = {asset: {}}) {
   const imageObj = {
     asset: {_ref: source.asset._ref || source.asset._id}

@@ -1,9 +1,9 @@
 import {format} from 'date-fns'
 
 export default {
-  name: 'news',
+  name: 'blog',
   type: 'document',
-  title: 'News',
+  title: 'Blog',
   initialValue: {
     publishedAt: (new Date()).toISOString()
   },
@@ -106,7 +106,7 @@ export default {
     },
     prepare ({title = 'No title', publishedAt, slug = {}, media}) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/news/${dateSegment}/${slug.current}/`
+      const path = `/blog/${dateSegment}/${slug.current}/`
       return {
         title,
         media,

@@ -29,16 +29,16 @@ export default () =>
     .title('Content')
     .items([
       S.listItem()
-        .title('News')
+        .title('Blog')
         .icon(MdNew)
-        .schemaType('news')
+        .schemaType('blog')
         .child(
-          S.documentTypeList('news')
-            .title('News')
+          S.documentTypeList('blog')
+            .title('Blog')
             .child(documentId =>
               S.document()
                 .documentId(documentId)
-                .schemaType('news')
+                .schemaType('blog')
                 .views([
                   S.view.form().icon(EditIcon),
                   S.view

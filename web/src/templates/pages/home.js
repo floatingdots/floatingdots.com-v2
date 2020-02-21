@@ -12,8 +12,10 @@ import Layout from '../../containers/layout'
 
 import Divider from '../../components/shared/divider'
 import Intro from '../../components/Home/intro'
-import ProjectsList from '../../components/Home/projects-list'
 import WeLove from '../../components/Home/weLove'
+import ProjectsList from '../../components/Home/projects-list'
+import BlogList from '../../components/Home/blog-list'
+import Contact from '../../components/Home/contact'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -68,7 +70,31 @@ export const query = graphql`
           }
           mainImage{
             asset {
-              fluid(maxWidth: 1024) {
+              fluid(maxWidth: 720) {
+                ...GatsbySanityImageFluid_withWebp_noBase64
+              }
+            }
+          }
+        }
+      }
+    }
+    blog: allSanityBlog(
+      limit: 3
+      sort: { fields: [publishedAt], order: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
+    ) {
+      edges {
+        node {
+          title{
+            locale(language: $language)
+          }
+          publishedAt
+          slug{
+            current
+          }
+          mainImage{
+            asset {
+              fluid(maxWidth: 1024, maxHeight: 400) {
                 ...GatsbySanityImageFluid_withWebp_noBase64
               }
             }
@@ -95,6 +121,11 @@ const IndexPage = props => {
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
     : []
+  const blogNode = (data || {}).blog
+    ? mapEdgesToNodes(data.blog)
+      .filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture)
+    : []
 
   return (
     <Layout isHome>
@@ -112,7 +143,13 @@ const IndexPage = props => {
       <Divider />
       <WeLove />
       <Divider />
-
+      {blogNode && (
+        <BlogList
+          nodes={blogNode}
+        />
+      )}
+      <Divider />
+      <Contact />
     </Layout>
   )
 }

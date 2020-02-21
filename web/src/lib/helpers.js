@@ -21,8 +21,8 @@ export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
   return !isFuture(parseISO(publishedAt))
 }
 
-export function getNewsUrl (publishedAt, slug) {
-  return `/news/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
+export function getBlogUrl (publishedAt, slug, locale) {
+  return locale === 'en' ? `/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/` : `${locale}/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 
 export function getProjectsUrl (slug, locale) {

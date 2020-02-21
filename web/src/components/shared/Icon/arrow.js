@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 const Arrow = styled.div`
   display: block;
   position: relative;
-  background-color: ${colors.lightBlack};
+  background-color: ${colors.blue};
   width: 4rem;
   height: 0.2rem;
   border-radius: 1rem;
@@ -21,7 +21,7 @@ const Arrow = styled.div`
     transform: rotate(40deg);
   }
   &:before, &:after {
-    background-color: ${colors.lightBlack};
+    background-color: ${colors.blue};
     display: block;
     content: "";
     position: absolute;
@@ -29,14 +29,13 @@ const Arrow = styled.div`
     width: 2rem;
     height: 0.2rem;
     transform-origin: 0.08rem center;
-    /* border-radius: 1rem; */
   }
 `
 
 const Icon = (props) => {
   const {options} = props
   return (
-    <Wrapper options={options}>
+    <Wrapper options={options} size>
       <Arrow />
     </Wrapper>
   )

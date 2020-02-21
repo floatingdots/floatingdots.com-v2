@@ -1,14 +1,14 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
-
 import {Link} from 'gatsby'
-import {colors, font, fontfamily} from '../../lib/variables'
+import styled from 'styled-components'
+
+import {colors} from '../../lib/variables'
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 4rem 0;
 
   @media (min-width: 1024px) {
@@ -17,10 +17,9 @@ const Wrapper = styled.div`
 `
 
 const StyledLink = styled(props => <Link {...props} />)`
-  font-family: ${fontfamily.ja};
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   display: block;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 3px ${colors.black} solid;
   font-weight: 700;
   border-color: ${props => props.color === 'white' ? 'white' : colors.black};
@@ -29,14 +28,13 @@ const StyledLink = styled(props => <Link {...props} />)`
   text-decoration: none;
   text-align: center;
   width: auto;
-  padding: 0.8rem 1.4rem;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 `
 const AnoterSite = styled.a`
-  font-family: ${fontfamily.ja};
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   display: block;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 3px ${colors.black} solid;
   font-weight: 700;
   border-color: ${props => props.color === 'white' ? 'white' : colors.black};
@@ -45,21 +43,21 @@ const AnoterSite = styled.a`
   text-decoration: none;
   text-align: center;
   width: auto;
-  padding: 0.8rem 1.4rem;
+  padding: 1rem 2rem;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 `
 
 const Button = props => {
-  const {label, link, color, anotherSite} = props
+  const {label, to, color, anotherSite} = props
   return (
     <Wrapper>
-      {link && !anotherSite &&
-      <StyledLink to={link} color={color}>
+      {to && !anotherSite &&
+      <StyledLink to={to} color={color}>
         {label}
       </StyledLink>
       }
-      {link && anotherSite &&
-      <AnoterSite href={link} color={color} target='_blank'>
+      {to && anotherSite &&
+      <AnoterSite href={to} color={color} target='_blank'>
         {label}
       </AnoterSite>
       }

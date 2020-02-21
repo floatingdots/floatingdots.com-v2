@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 const StyledLink = styled(props => <Link {...props} />)`
   text-decoration: none;
   &:hover{
-    opacity: 1;
+    opacity: 0.85;
   }
 `
 

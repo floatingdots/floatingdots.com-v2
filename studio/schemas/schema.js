@@ -1,7 +1,7 @@
 import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
-import news from './documents/news'
+import blog from './documents/blog'
 import projects from './documents/projects'
 import pages from './documents/pages'
 import category from './documents/category'
@@ -21,8 +21,8 @@ export default createSchema({
   name: 'studio',
   types: schemaTypes.concat([
     siteSettings,
-    news,
     projects,
+    blog,
     pages,
     category,
     mainImage,

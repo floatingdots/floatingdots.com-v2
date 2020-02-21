@@ -46,7 +46,7 @@ const StyledImg = styled(props => <Img {...props} />)`
   margin: 0 0 0 auto;
 `
 
-function NewsPreview (props) {
+function Blog (props) {
   const {title, publishedAt, slug, mainImage} = props
   const {i18n} = useTranslation()
 
@@ -73,4 +73,4 @@ function NewsPreview (props) {
   )
 }
 
-export default NewsPreview
+export default Blog

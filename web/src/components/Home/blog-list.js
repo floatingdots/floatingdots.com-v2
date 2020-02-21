@@ -37,14 +37,14 @@ const Heading = styled.span`
   }
 `
 
-function NewsPreviewList (props) {
+function BlogList (props) {
   return (
     <Wrapper>
       <Heading>Blog</Heading>
       <List>
         {props.nodes &&
           props.nodes.map(node => (
-            <Item key={node._id} >
+            <Item key={node.id} >
               <Blog {...node} isInList />
             </Item>
           ))}
@@ -53,8 +53,8 @@ function NewsPreviewList (props) {
   )
 }
 
-NewsPreviewList.defaultProps = {
+BlogList.defaultProps = {
   nodes: []
 }
 
-export default NewsPreviewList
+export default BlogList

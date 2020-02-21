@@ -35,7 +35,7 @@ const Arrow = styled.div`
 const Icon = (props) => {
   const {options} = props
   return (
-    <Wrapper options={options} size>
+    <Wrapper options={options} >
       <Arrow />
     </Wrapper>
   )

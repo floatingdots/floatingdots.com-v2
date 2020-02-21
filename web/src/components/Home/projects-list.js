@@ -1,7 +1,5 @@
 import React from 'react'
-import {Link} from 'gatsby'
 import styled from 'styled-components'
-import {colors, font, fontfamily} from '../../lib/variables'
 
 import Projects from './projects'
 
@@ -29,7 +27,7 @@ function ProjectsList (props) {
       <List>
         {props.nodes &&
           props.nodes.map(node => (
-            <Item key={node._id} >
+            <Item key={node.id} >
               <Projects {...node} isInList />
             </Item>
           ))}

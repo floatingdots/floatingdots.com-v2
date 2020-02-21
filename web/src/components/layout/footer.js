@@ -36,14 +36,14 @@ const Groups = styled.div`
 `
 
 const Group1 = styled.div`
-  flex: 0 0 70%;
+  flex: 0 0 60%;
   margin: 0 0 4rem 0;
   @media (min-width: 768px) {
     margin: 0;
   }
 `
 const Group2 = styled.div`
-  flex: 0 0 30%;
+  flex: 0 0 40%;
   margin: 0 0 4rem 0;
   @media (min-width: 768px) {
     margin: 0;

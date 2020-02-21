@@ -3,10 +3,7 @@ import {Link} from 'gatsby'
 import styled from 'styled-components'
 
 import Icon from '../shared/Icon/'
-import i18next from 'i18next'
-
 import {useTranslation} from 'react-i18next'
-import LangSwitcher from '../shared/langSwitcher'
 
 const Wrapper = styled.header`
   position: fixed;
@@ -51,7 +48,7 @@ const Header = ({onHideNav, onShowNav, showNav, path}) => {
   return (
     <Wrapper>
       <Inner>
-        <StyledLink to={i18n.language !== 'en' ? `/${i18n.language}` : '/'} title='Floating Dots'>
+        <StyledLink to={i18n.language === 'en' ? `/` : `/${i18n.language}`} title='Floating Dots'>
           <Logo src='/logo/logo_header.min.svg' />
         </StyledLink>
         <Icon symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} />

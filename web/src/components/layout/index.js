@@ -150,11 +150,11 @@ function Layout ({props, children, onHideNav, onShowNav, showNav, isHome}) {
         onShowNav={onShowNav}
         showNav={showNav}
       />
-      {/* <MobileNav
+      <MobileNav
         onHideNav={onHideNav}
         onShowNav={onShowNav}
         showNav={showNav}
-      /> */}
+      />
       <Wrapper className={(isHome && 'home')}>{children}</Wrapper>
       <Footer />
     </Wrap>

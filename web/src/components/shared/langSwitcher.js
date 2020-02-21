@@ -1,33 +1,56 @@
-import {Link} from 'gatsby'
 import React, {useContext} from 'react'
+import {Link} from 'gatsby'
+import styled from 'styled-components'
 import {AlternateLinksContext} from '../layout/wrapWithI18nProvider'
 import {useTranslation} from 'react-i18next'
+
+import {colors} from '../../lib/variables'
+
+const Wrapper = styled.div`
+  display: block;
+  text-align: right;
+`
+
+const Title = styled.span`
+  font-size: 2rem;
+  display: block;
+  font-weight: 700;
+  margin: 0 0 1.6rem 0;
+  color: ${colors.lightBlack};
+`
+
+const StyledLink = styled(props => <Link {...props} />)`
+  display: block;
+  font-size: 1.8rem;
+  color: ${colors.lightBlack};
+  text-decoration: none;
+  margin: 0 0 2.4rem 0;
+  &.active{
+    font-weight: 700;
+  }
+`
 
 const LangSwitcher = () => {
   const alternateLinks = useContext(AlternateLinksContext)
   const {t, i18n} = useTranslation(['common', 'home'])
 
   return (
-    <div>
+    <Wrapper>
+      <Title>Seect Language</Title>
       {alternateLinks &&
       alternateLinks
-        // .filter(link => link.language !== i18n.language)
         .map((link, i) => [
-          i > 0 && ' | ',
-          <Link
+          <StyledLink
             key={link}
             to={link.path}
-            style={{
-              color: `red`,
-              textDecoration: `none`
-            }}
             hrefLang={link.language}
+            className={link.language === i18n.language && 'active'}
             onClick={() => { window.localStorage.setItem('lang', link.language) }}
           >
             {t(link.language)}
-          </Link>
+          </StyledLink>
         ])}
-    </div>
+    </Wrapper>
   )
 }
 

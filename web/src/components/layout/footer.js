@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
+import {useTranslation} from 'react-i18next'
 
-import {colors, font, fontfamily} from '../../lib//variables'
+import {colors} from '../../lib//variables'
 
 const Wrapper = styled.footer`
   display: block;
@@ -88,31 +89,31 @@ const Copyright = styled.span`
   letter-spacing: 0.02rem;
 `
 
-class Footer extends React.Component {
-  render () {
-    return (
-      <Wrapper>
-        <Inner>
-          <Groups>
-            <Group1>
-              <Nav>
-                <List>
-                  <Item><StyledLink to='/projects/'>Projects</StyledLink></Item>
-                  <Item><StyledLink to='/blog/'>Blog</StyledLink></Item>
-                  <Item><StyledLink to='/about/'>About</StyledLink></Item>
-                  <Item><StyledLink to='/careers/'>Careers</StyledLink></Item>
-                </List>
-              </Nav>
-            </Group1>
-            <Group2>
-              <Email href='mail:hi@floatingdots.com'>hi@floatingdots.com</Email>
-              <Address>530 Fifth Ave,<br />Floor9 #13,<br />New York, NY 10036</Address>
-            </Group2>
-          </Groups>
-          <Copyright>&copy; Floating Dots, LLC</Copyright>
-        </Inner>
-      </Wrapper>
-    )
-  }
+const Footer = () => {
+  const {i18n} = useTranslation()
+
+  return (
+    <Wrapper>
+      <Inner>
+        <Groups>
+          <Group1>
+            <Nav>
+              <List>
+                <Item><StyledLink to={i18n.language === 'en' ? /projects/ : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? /blog/ : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? /about/ : `/${i18n.language}/about/`}>About</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? /careers/ : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+              </List>
+            </Nav>
+          </Group1>
+          <Group2>
+            <Email href='mail:hi@floatingdots.com'>hi@floatingdots.com</Email>
+            <Address>530 Fifth Ave,<br />Floor9 #13,<br />New York, NY 10036</Address>
+          </Group2>
+        </Groups>
+        <Copyright>&copy; Floating Dots, LLC</Copyright>
+      </Inner>
+    </Wrapper>
+  )
 }
 export default Footer

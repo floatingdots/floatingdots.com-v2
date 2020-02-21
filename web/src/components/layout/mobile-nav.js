@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'gatsby'
-
+import {useTranslation} from 'react-i18next'
 import styled from 'styled-components'
-import {colors, font, fontfamily} from '../../lib/variables'
+
+import {colors} from '../../lib/variables'
+import LanguageSwitcher from '../shared/langSwitcher'
 
 const Wrapper = styled.nav`
   display: block;
@@ -13,16 +15,14 @@ const Wrapper = styled.nav`
   top: 0;
   left: 0;
   position: fixed;
-  background: ${colors.black};
+  background: ${colors.white};
   z-index: 10;
   pointer-events: none;
-  /* transform: translateY(-100%); */
   transition: all 0.2s linear;
   opacity: 0;
   padding: 8rem 1.6rem 8rem 2rem;
   &.active{
     opacity: 1;
-    /* transform: translateY(0); */
     pointer-events: auto;
   }
 `
@@ -34,58 +34,35 @@ const Inner = styled.div`
 
 const List = styled.ul`
   display: block;
-  font-family: ${fontfamily.handwriting};
-  font-size: 3.6rem;
-  font-weight: 400;
-  margin: 4rem 0 0 0;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin: 4rem 0 5.6rem 0;
+  text-align: right;
 `
 
 const Item = styled.li`
-  margin: 0 0 2.0rem 0;
+  margin: 0 0 4rem 0;
 `
 
 const StyledLink = styled(props => <Link {...props} />)`
-  color: white;
+  color: ${colors.black};
   text-decoration: none;
 `
-
-const StyledExternal = styled.a`
-  color: ${colors.white};
-  text-decoration: none;
-`
-const Socials = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 0 1.8rem 0;
-`
-
-const Social = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 4rem 0 0;
-`
-
-const Icon = styled.img`
-  display: block;
-  width: 32px;
-`
-
-const Small = styled.span`
-  font-size: 1.2rem;
-  margin: 0 0 0 2.4rem;
-  opacity: 0.8;
-  font-family: ${fontfamily.ja};
- `
-
-const MobileNav = ({onHideNav, onShowNav, showNav}) => (
-  <Wrapper className={(showNav && 'active')}>
-    <Inner>
-      <List>
-        {/* <Item><StyledLink to='/news/'>News</StyledLink></Item> */}
-      </List>
-    </Inner>
-  </Wrapper>
-)
+const MobileNav = ({onHideNav, onShowNav, showNav}) => {
+  const {i18n} = useTranslation()
+  return (
+    <Wrapper className={(showNav && 'active')}>
+      <Inner>
+        <List>
+          <Item><StyledLink to={i18n.language === 'en' ? /projects/ : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
+          <Item><StyledLink to={i18n.language === 'en' ? /blog/ : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
+          <Item><StyledLink to={i18n.language === 'en' ? /about/ : `/${i18n.language}/about/`}>About</StyledLink></Item>
+          <Item><StyledLink to={i18n.language === 'en' ? /careers/ : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+        </List>
+        <LanguageSwitcher />
+      </Inner>
+    </Wrapper>
+  )
+}
 
 export default MobileNav

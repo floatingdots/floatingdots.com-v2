@@ -43,8 +43,10 @@ const Icon = styled.button`
   }
 `
 
-const NavIcon = () => (
-  <Icon />
-)
+const NavIcon = (props) => {
+  return (
+    <Icon {...props} />
+  )
+}
 
 export default NavIcon

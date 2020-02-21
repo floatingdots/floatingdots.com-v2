@@ -11,7 +11,13 @@ export default {
     {
       name: 'title',
       type: 'localeString',
-      title: 'タイトル'
+      title: 'Title'
+      // description: 'Titles should be catchy, descriptive, and not too long'
+    },
+    {
+      name: 'subTitle',
+      type: 'localeString',
+      title: 'Sub Title'
       // description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
@@ -40,6 +46,26 @@ export default {
       type: 'mainImage',
       title: 'メインイメージ',
       description: '一覧ページサムネイル、SNS共有用'
+    },
+    {
+      title: 'Platforms',
+      name: 'platforms',
+      type: 'string'
+    },
+    {
+      title: 'Deliverables',
+      name: 'deliverables',
+      type: 'string'
+    },
+    {
+      title: 'Techs',
+      name: 'techs',
+      type: 'string'
+    },
+    {
+      title: 'URL',
+      name: 'url',
+      type: 'url'
     },
     {
       name: 'excerpt',
@@ -105,7 +131,7 @@ export default {
       media: 'mainImage'
     },
     prepare ({title = 'No title', publishedAt, slug = {}, media}) {
-      const path = `/projects/}/${slug.current}/`
+      const path = `/projects//${slug.current}/`
       return {
         title,
         media,

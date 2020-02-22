@@ -44,7 +44,7 @@
     "gatsby-plugin-sitemap": "^2.2.24",
     "gatsby-plugin-styled-components": "^3.1.16",
     "gatsby-plugin-web-font-loader": "^1.0.4",
-    "gatsby-source-sanity": "^4.0.3",
+    "gatsby-source-sanity": "^5.0.5",
     "get-youtube-id": "^1.0.1",
     "i18next": "^19.1.0",
     "i18next-browser-languagedetector": "^4.0.1",

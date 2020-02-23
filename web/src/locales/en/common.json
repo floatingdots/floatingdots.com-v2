@@ -1,6 +1,8 @@
 {
-  "ja": "日本語",
-  "en":  "English",
+  "ja": "日本語🇯🇵",
+  "en":  "English🇺🇸",
   "language": "Language",
-  "goToTop": "Go to top page"
+  "goToTop": "Go to top page",
+  "talk": "Let's talk\nabout your project!👇",
+  "contact": "Contact Us"
 }

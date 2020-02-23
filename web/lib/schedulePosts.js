@@ -7,7 +7,7 @@ const {formatToTimeZone} = require('date-fns-timezone')
 module.exports = async function schedulePosts (graphql, reporter) {
   const result = await graphql(`
     {
-      news: allSanityNews(
+      news: allSanityBlogs(
         filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
       ) {
         edges {

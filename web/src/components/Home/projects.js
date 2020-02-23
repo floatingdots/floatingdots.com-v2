@@ -41,8 +41,6 @@ const Title = styled.span`
   @media (min-width: 768px) {
     font-size: 3.2rem;
   }
-
-
 `
 
 const StyledImg = styled(props => <Img {...props} />)`

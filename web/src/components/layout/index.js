@@ -103,8 +103,11 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: ${colors.black};
-    font-family: ${fontfamily.ja};
+    font-family: ${fontfamily.en};
     overflow-x: hidden;
+  }
+  [lang]:lang(ja){
+    font-family: ${fontfamily.ja};
   }
 
   p {

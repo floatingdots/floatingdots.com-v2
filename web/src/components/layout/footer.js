@@ -99,10 +99,10 @@ const Footer = () => {
           <Group1>
             <Nav>
               <List>
-                <Item><StyledLink to={i18n.language === 'en' ? /projects/ : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
-                <Item><StyledLink to={i18n.language === 'en' ? /blog/ : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
-                <Item><StyledLink to={i18n.language === 'en' ? /about/ : `/${i18n.language}/about/`}>About</StyledLink></Item>
-                <Item><StyledLink to={i18n.language === 'en' ? /careers/ : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
+                <Item><StyledLink to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
               </List>
             </Nav>
           </Group1>

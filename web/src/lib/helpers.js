@@ -64,10 +64,8 @@ export function createLocaleTextGetter (languageCode) {
       if (typeof value._type === 'undefined') {
         return value
       }
-      console.log(value._type)
       if (/^locale[A-Z]/.test(value._type)) {
       // if (value._type.includes('locale')) {
-        console.log(value)
         const language = languages.find(lang => value[lang])
         return value[language]
       }

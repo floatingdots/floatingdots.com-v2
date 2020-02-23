@@ -5,7 +5,7 @@ module.exports = function createResolvers (createResolvers) {
         type: `String!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
-          return source[args.language] || source['en']
+          return source[args.language] || ''
         }
       }
     },
@@ -14,7 +14,7 @@ module.exports = function createResolvers (createResolvers) {
         type: `String!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
-          return source[args.language] || source['en']
+          return source[args.language] || ''
         }
       }
     },
@@ -23,7 +23,7 @@ module.exports = function createResolvers (createResolvers) {
         type: `JSON!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
-          return source[args.language] || source['en']
+          return source[args.language] || {}
         }
       }
     },
@@ -32,7 +32,7 @@ module.exports = function createResolvers (createResolvers) {
         type: `JSON!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
-          return source[args.language] || source['en']
+          return source[args.language] || {}
         }
       }
     }

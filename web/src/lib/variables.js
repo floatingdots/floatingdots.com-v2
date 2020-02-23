@@ -13,15 +13,14 @@ export const colors = {
   white: '#FFFFFF',
   black: '#231F20',
   lightBlack: '#303037',
-  gray: '#eee',
   blue: '#133EFF', // 0043ff
   red: '#FF5A5F',
   green: '#A9DEAC'
 }
 
 export const fontfamily = {
-  en: '"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif',
-  ja: '"SF Pro JP","SF Pro Text","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif'
+  en: '-apple-system, BlinkMacSystemFont,"Helvetica Neue","Helvetica","Arial",sans-serif',
+  ja: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif'
 }
 
 export const font = {

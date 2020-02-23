@@ -20,7 +20,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleExcerptPortableText: {
       locale: {
-        type: `String!`,
+        type: `JSON!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || source['en']
@@ -29,7 +29,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleBodyPortableText: {
       locale: {
-        type: `String!`,
+        type: `JSON!`,
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || source['en']

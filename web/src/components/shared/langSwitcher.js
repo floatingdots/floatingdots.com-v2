@@ -32,8 +32,7 @@ const StyledLink = styled(props => <Link {...props} />)`
 
 const LangSwitcher = () => {
   const alternateLinks = useContext(AlternateLinksContext)
-  const {t, i18n} = useTranslation(['common', 'home'])
-
+  const {t, i18n} = useTranslation(['common'])
   return (
     <Wrapper>
       <Title>Seect Language</Title>

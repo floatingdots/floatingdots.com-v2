@@ -16,7 +16,7 @@ export default {
     },
     {
       name: 'subTitle',
-      type: 'localeString',
+      type: 'localeText',
       title: 'Sub Title'
       // description: 'Titles should be catchy, descriptive, and not too long'
     },

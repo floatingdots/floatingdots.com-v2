@@ -5,7 +5,7 @@ module.exports = async function createProjects (graphql, actions, reporter) {
   const currentDateTime = new Date().toISOString()
   const {createPage} = actions
   reporter.info('--------------------Projects Pages----------------------')
-  return graphql(`
+  await graphql(`
   query projects ($currentDateTime: Date!) {
     news: allSanityProjects (
       filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDateTime } }

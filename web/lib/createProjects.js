@@ -4,6 +4,7 @@ const buildI18nPages = require('./helpers')
 module.exports = async function createProjects (graphql, actions, reporter) {
   const currentDateTime = new Date().toISOString()
   const {createPage} = actions
+  reporter.info('--------------------Projects Pages----------------------')
   return graphql(`
   query projects ($currentDateTime: Date!) {
     news: allSanityProjects (
@@ -28,7 +29,7 @@ module.exports = async function createProjects (graphql, actions, reporter) {
     const filteredEdges = postEdges.filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
     const locales = []
 
-    const page = filteredEdges.map(p => buildI18nPages(
+    const i18nPages = filteredEdges.map(p => buildI18nPages(
       null,
       (_, lang) => ({
         path: lang === 'en' ? `/projects/${p.node.slug.current}` : `/${lang}/projects/${p.node.slug.current}`,
@@ -39,9 +40,10 @@ module.exports = async function createProjects (graphql, actions, reporter) {
         }
       }),
       ['common', ...locales], // Must incled common to show language switcher
-      createPage
+      createPage,
+      reporter
     ))
 
-    await Promise.all(page)
+    await Promise.all(i18nPages)
   })
 }

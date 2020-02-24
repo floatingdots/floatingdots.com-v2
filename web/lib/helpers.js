@@ -50,7 +50,8 @@ module.exports = async function buildI18nPages (
   inputData,
   pageDefinitionCallback,
   namespaces,
-  createPage
+  createPage,
+  reporter
 ) {
   if (!Array.isArray(inputData)) inputData = [inputData]
   await Promise.all(
@@ -72,6 +73,7 @@ module.exports = async function buildI18nPages (
 
       definitions.forEach(d => {
         d.context.alternateLinks = alternateLinks
+        reporter.info(`Creating: ${d.path}`)
         createPage(d)
       })
     })

@@ -7,8 +7,9 @@ const buildI18nPages = require('./helpers')
 module.exports = async function createPagePages (graphql, actions, reporter) {
   const currentDateTime = new Date().toISOString()
   const {createPage} = actions
+  reporter.info('--------------------Pages----------------------')
 
-  const page = pages.map(p => buildI18nPages(
+  const i18nPages = pages.map(p => buildI18nPages(
     null,
     (_, lang) => ({
       path: p.slug === 'home' ? lang === 'en' ? '/' : `/${lang}` : lang === 'en' ? `/${p.slug}` : `/${lang}/${p.slug}`,
@@ -18,8 +19,9 @@ module.exports = async function createPagePages (graphql, actions, reporter) {
       }
     }),
     p.locales,
-    createPage
+    createPage,
+    reporter
   ))
 
-  await Promise.all(page)
+  await Promise.all(i18nPages)
 }

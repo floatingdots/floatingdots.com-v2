@@ -9,7 +9,7 @@ import {
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
 
-import BlogArchive from '../components/Blog/blog-archive-list'
+import BlogArchives from '../components/BlogArchives'
 
 export const query = graphql`
 
@@ -55,7 +55,7 @@ export const query = graphql`
   }
 `
 
-const NewsTemplate = props => {
+const BlogArchivesTemplate = props => {
   const {data, errors} = props
 
   const site = (data || {}).site
@@ -80,11 +80,11 @@ const NewsTemplate = props => {
         <GraphQLErrorList errors={errors} />
       )}
 
-      {blogNodes && <BlogArchive nodes={blogNodes} currentPage={currentPage} numPages={numPages}
+      {blogNodes && <BlogArchives nodes={blogNodes} currentPage={currentPage} numPages={numPages}
       />}
 
     </Layout>
   )
 }
 
-export default NewsTemplate
+export default BlogArchivesTemplate

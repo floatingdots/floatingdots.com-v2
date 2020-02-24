@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
-import BlogArchive from './blog-archive'
+import Preview from './preview'
 // import Heading from '../heading'
 // import Button from '../button'
 import {colors} from '../../lib/variables'
@@ -37,7 +37,7 @@ const Heading = styled.span`
   }
 `
 
-function BlogArchiveList (props) {
+function BlogArchives (props) {
   console.log(JSON.stringify(props.nodes, null, 2))
   return (
     <Wrapper>
@@ -47,7 +47,7 @@ function BlogArchiveList (props) {
         {props.nodes &&
           props.nodes.map(node => (
             <Item key={node.id} >
-              <BlogArchive {...node} isInList />
+              <Preview {...node} isInList />
             </Item>
           ))}
       </List>
@@ -55,8 +55,8 @@ function BlogArchiveList (props) {
   )
 }
 
-BlogArchiveList.defaultProps = {
+BlogArchives.defaultProps = {
   nodes: []
 }
 
-export default BlogArchiveList
+export default BlogArchives

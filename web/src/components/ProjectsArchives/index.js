@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Preview from './preview'
-// import Heading from '../heading'
-// import Button from '../button'
+import Projects from './projects'
 import {colors} from '../../lib/variables'
 
 const Wrapper = styled.section`
@@ -13,17 +11,15 @@ const Wrapper = styled.section`
 const List = styled.ul`
   display: block;
   position: relative;
-  margin: 1.6rem 0 0 0;
 `
 
 const Item = styled.li`
-  display: block;
   margin: 0 0 8rem 0;
   @media (min-width: 768px) {
-    margin: 0 0 12.8rem 0;
+    margin-bottom: 12.8rem;
   }
-`
 
+`
 const Heading = styled.span`
   font-size: 3.6rem;
   font-weight: 700;
@@ -38,17 +34,16 @@ const Heading = styled.span`
  }
 `
 
-function BlogArchives (props) {
-  console.log(JSON.stringify(props.nodes, null, 2))
+function ProjectsArchives (props) {
   return (
     <Wrapper>
-      <Heading>Blog</Heading>
+      <Heading>Projects</Heading>
 
       <List>
         {props.nodes &&
           props.nodes.map(node => (
             <Item key={node.id} >
-              <Preview {...node} isInList />
+              <Projects {...node} isInList />
             </Item>
           ))}
       </List>
@@ -56,8 +51,8 @@ function BlogArchives (props) {
   )
 }
 
-BlogArchives.defaultProps = {
+ProjectsArchives.defaultProps = {
   nodes: []
 }
 
-export default BlogArchives
+export default ProjectsArchives

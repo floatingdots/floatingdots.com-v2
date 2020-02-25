@@ -15,10 +15,6 @@ export const query = graphql`
 
   query ProjectsArchiveTemplateQuery($skip: Int!, $limit: Int!, $currentDatetime: Date!, $language: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      heroImage{
-        ...SanityImage
-        alt
-      }
       title
       description{
         locale(language: $language)
@@ -79,8 +75,13 @@ const ProjectsArchivesTemplate = props => {
         <GraphQLErrorList errors={errors} />
       )}
 
-      {projectsNodes && <ProjectsArchives nodes={projectsNodes} currentPage={currentPage} numPages={numPages}
-      />}
+      {projectsNodes &&
+        <ProjectsArchives
+          nodes={projectsNodes}
+          currentPage={currentPage}
+          numPages={numPages}
+        />
+      }
 
     </Layout>
   )

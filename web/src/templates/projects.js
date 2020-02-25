@@ -32,10 +32,6 @@ export const query = graphql`
 
   query ProjectsTemplateQuery($id: String!, $language: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      heroImage{
-        ...SanityImage
-        alt
-      }
       title
       description{
         locale(language: $language)
@@ -94,7 +90,7 @@ const ProjectsTemplate = props => {
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage || site.heroImage} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
       {post && <Projects {...post} />}
 
     </Layout>

@@ -32,10 +32,6 @@ export const query = graphql`
 
   query NewsTemplateQuery($id: String!, $language: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      heroImage{
-        ...SanityImage
-        alt
-      }
       title
       description{
         locale(language: $language)
@@ -71,17 +67,15 @@ export const query = graphql`
 `
 
 const BlogTemplate = props => {
-  const {data, errors, pageContext} = props
+  const {data, errors} = props
   const post = data && data.post
-  const site = data && data.site
-  const lang = pageContext && pageContext.language
   return (
     <Layout>
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage || site.heroImage} />}
-      {post && <Blog {...post} lang={lang || 'en'} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
+      {post && <Blog {...post} />}
     </Layout>
   )
 }

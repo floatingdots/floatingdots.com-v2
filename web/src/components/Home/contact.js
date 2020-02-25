@@ -24,7 +24,7 @@ const Title = styled.h2`
 `
 
 const Contact = (props) => {
-  const {t, i18n} = useTranslation('home')
+  const {t, i18n} = useTranslation('common')
   return (
     <Wrapper>
       <Title >{t('talk')}</Title>

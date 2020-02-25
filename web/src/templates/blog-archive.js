@@ -15,10 +15,6 @@ export const query = graphql`
 
   query BlogArchiveTemplateQuery($skip: Int!, $limit: Int!, $currentDatetime: Date!, $language: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      heroImage{
-        ...SanityImage
-        alt
-      }
       title
       description{
         locale(language: $language)
@@ -73,15 +69,19 @@ const BlogArchivesTemplate = props => {
       <SEO
         title={site.title}
         description={site.description}
-        keywords={site.keywords}
       />
 
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
 
-      {blogNodes && <BlogArchives nodes={blogNodes} currentPage={currentPage} numPages={numPages}
-      />}
+      {blogNodes &&
+        <BlogArchives
+          nodes={blogNodes}
+          currentPage={currentPage}
+          numPages={numPages}
+        />
+      }
 
     </Layout>
   )

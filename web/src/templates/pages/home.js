@@ -40,7 +40,7 @@ export const query = graphql`
     }
   }
 
-  query IndexPageQuery( $language: String!, $currentDatetime: Date!) {
+  query HomePgeQuery( $language: String!, $currentDatetime: Date!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       homeIntro{
@@ -48,10 +48,6 @@ export const query = graphql`
       }
       description{
         locale(language: $language)
-      }
-      heroImage {
-        ...SanityImage
-        alt
       }
     }
     projects: allSanityProjects(

@@ -21,15 +21,26 @@ export default {
       description: 'Describe your blog for search engines and social media.'
     },
     {
-      name: 'heroImage',
-      type: 'mainImage',
-      title: 'トップページメイン画像'
-    },
-    {
       name: 'socialImage',
       type: 'mainImage',
       title: 'SNS用画像',
       description: 'SNS共有などで利用するデフォルト画像'
+    },
+    {
+      name: 'address',
+      type: 'text',
+      title: 'Address',
+      rows: 3
+    },
+    {
+      name: 'googleMaps',
+      type: 'string',
+      title: 'Google Maps'
+    },
+    {
+      name: 'email',
+      type: 'string',
+      title: 'Email'
     }
   ]
 }

@@ -39,7 +39,6 @@ const Heading = styled.span`
 `
 
 function BlogArchives (props) {
-  console.log(JSON.stringify(props.nodes, null, 2))
   return (
     <Wrapper>
       <Heading>Blog</Heading>
@@ -48,7 +47,7 @@ function BlogArchives (props) {
         {props.nodes &&
           props.nodes.map(node => (
             <Item key={node.id} >
-              <Preview {...node} isInList />
+              <Preview {...node} />
             </Item>
           ))}
       </List>

@@ -28,7 +28,7 @@ function ProjectsList (props) {
         {props.nodes &&
           props.nodes.map(node => (
             <Item key={node.id} >
-              <Projects {...node} isInList />
+              <Projects {...node} />
             </Item>
           ))}
       </List>

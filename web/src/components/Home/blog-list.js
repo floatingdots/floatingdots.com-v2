@@ -45,7 +45,7 @@ function BlogList (props) {
         {props.nodes &&
           props.nodes.map(node => (
             <Item key={node.id} >
-              <Blog {...node} isInList />
+              <Blog {...node} />
             </Item>
           ))}
       </List>

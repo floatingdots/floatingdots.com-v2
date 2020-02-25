@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import {Link} from 'gatsby'
 import {useTranslation} from 'react-i18next'
 
-import {format, formatDistanceToNow, differenceInDays, parseISO} from 'date-fns'
-import ja from 'date-fns/locale/ja'
-
-import {getBlogUrl} from '../../lib/helpers'
+import {getBlogUrl, getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
 import Img from 'gatsby-image'
 
@@ -34,7 +31,7 @@ const DateCats = styled.div`
   margin-top: 0.8rem;
 `
 
-const DateTime = styled.span`
+const DateTime = styled.time`
   display: block;
   color: ${colors.lightBlack};
   margin: 0 0.8rem 0 0;
@@ -62,10 +59,8 @@ function Blog (props) {
       </StyledLink>
       <DateCats>
         {publishedAt && (
-          <DateTime>
-            {differenceInDays(parseISO(publishedAt), new Date()) > -1
-              ? `${formatDistanceToNow(parseISO(publishedAt), {addSuffix: true, locale: ja})}`
-              : format(parseISO(publishedAt), 'yyyy年MM月dd日(iii)', {locale: ja})}
+          <DateTime DateTime={publishedAt}>
+            {getPublishdAt(publishedAt, i18n.language)}
           </DateTime>
         )}
       </DateCats>

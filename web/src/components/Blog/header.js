@@ -1,9 +1,9 @@
 import React from 'react'
-import {format, formatDistanceToNow, differenceInDays, parseISO} from 'date-fns'
-import {ja} from 'date-fns/locale'
-
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import {useTranslation} from 'react-i18next'
+
+import {getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
 
 const Wrapper = styled.header`
@@ -31,7 +31,9 @@ const DateTime = styled.time`
 `
 
 const BlogHeader = props => {
-  const {title, mainImage, publishedAt, lang} = props
+  const {title, mainImage, publishedAt} = props
+  const {i18n} = useTranslation()
+
   return (
     <Wrapper>
       {mainImage && mainImage.asset &&
@@ -46,14 +48,7 @@ const BlogHeader = props => {
       }
       {publishedAt && (
         <DateTime dateTime={publishedAt}>
-          {lang === 'en' && `Posted At: ${(
-            differenceInDays(parseISO(publishedAt), new Date()) > -1
-              ? `${formatDistanceToNow(parseISO(publishedAt), {addSuffix: true})}`
-              : format(parseISO(publishedAt), 'MMM dd, yyyy'))}` }
-          {lang === 'ja' && `投稿日: ${(
-            differenceInDays(parseISO(publishedAt), new Date()) > -1
-              ? `${formatDistanceToNow(parseISO(publishedAt), {addSuffix: true, locale: ja})}`
-              : format(parseISO(publishedAt), 'yyyy年MM月dd日(iii)', {locale: ja}))}` }
+          {getPublishdAt(publishedAt, i18n.language)}
         </DateTime>
       )}
     </Wrapper>

@@ -1,4 +1,5 @@
-import {format, isFuture, parseISO} from 'date-fns'
+import {format, formatDistanceToNow, differenceInDays, parseISO, isFuture} from 'date-fns'
+import ja from 'date-fns/locale/ja'
 
 export function cn (...args) {
   return args.filter(Boolean).join(' ')
@@ -27,6 +28,20 @@ export function getBlogUrl (publishedAt, slug, locale) {
 
 export function getProjectsUrl (slug, locale) {
   return locale === 'en' ? `/projects/${slug.current || slug}/` : `/${locale}/projects/${slug.current || slug}/`
+}
+
+export function getPublishdAt (publishedAt, locale) {
+  if (locale === 'ja') {
+    return `投稿日: ${(
+      differenceInDays(parseISO(publishedAt), new Date()) > -1
+        ? `${formatDistanceToNow(parseISO(publishedAt), {addSuffix: true, locale: ja})}`
+        : format(parseISO(publishedAt), 'yyyy年MM月dd日(iii)', {locale: ja}))}`
+  } else {
+    return `Posted At: ${(
+      differenceInDays(parseISO(publishedAt), new Date()) > -1
+        ? `${formatDistanceToNow(parseISO(publishedAt), {addSuffix: true})}`
+        : format(parseISO(publishedAt), 'MMM dd, yyyy'))}`
+  }
 }
 
 export function buildImageObj (source = {asset: {}}) {

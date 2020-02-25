@@ -15,10 +15,10 @@ const Wrapper = styled.article`
 `
 
 const Projects = props => {
-  const {body, title, mainImage, publishedAt, lang} = props
+  const {body, title, mainImage, publishedAt} = props
   return (
     <Wrapper>
-      <Header title={title} mainImage={mainImage} publishedAt={publishedAt} lang={lang} />
+      <Header title={title} mainImage={mainImage} publishedAt={publishedAt} />
       <Divider />
       <Body body={body} />
       <Divider />

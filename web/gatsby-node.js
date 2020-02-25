@@ -3,7 +3,7 @@ const addCurrentDatetime = require('./lib/addCurrentDatetime')
 
 const createPagePages = require('./lib/createPage')
 const createProjects = require('./lib/createProjects')
-const {createBlogArchives} = require('./lib/createBlog')
+const {createBlogArchives, createBlogPages} = require('./lib/createBlog')
 
 const createLocaleResolvers = require('./lib/createLocaleResolvers')
 
@@ -19,6 +19,7 @@ exports.createPages = async ({graphql, actions, reporter}) => {
   await createPagePages(graphql, actions, reporter)
   await createProjects(graphql, actions, reporter)
   await createBlogArchives(graphql, actions, reporter)
+  await createBlogPages(graphql, actions, reporter)
 }
 
 exports.createResolvers = ({createResolvers}) => {

@@ -1,4 +1,4 @@
-const {format, isFuture, parseISO} = require('date-fns')
+const {isFuture, parseISO} = require('date-fns')
 const buildI18nPages = require('./helpers')
 
 module.exports = async function createProjects (graphql, actions, reporter) {

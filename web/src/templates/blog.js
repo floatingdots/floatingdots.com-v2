@@ -1,10 +1,10 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import NewsSingle from '../components/news-single'
-import SEO from '../components/seo'
+import GraphQLErrorList from '../components/shared/graphql-error-list'
+
 import Layout from '../containers/layout'
+import SEO from '../components/layout/seo'
+import Blog from '../components/Blog'
 import {toPlainText} from '../lib/helpers'
 
 export const query = graphql`
@@ -46,6 +46,11 @@ export const query = graphql`
       id
       publishedAt
       mainImage {
+        asset {
+          fluid(maxWidth: 720) {
+            ...GatsbySanityImageFluid_withWebp_noBase64
+          }
+        }
         ...SanityImage
         alt
       }
@@ -65,24 +70,20 @@ export const query = graphql`
   }
 `
 
-const NewsTemplate = props => {
-  const {data, errors} = props
+const BlogTemplate = props => {
+  const {data, errors, pageContext} = props
   const post = data && data.post
   const site = data && data.site
+  const lang = pageContext && pageContext.language
   return (
     <Layout>
-
-      {errors && <SEO title='GraphQL Error' />}
-      {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage || site.heroImage} />}
-
       {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
+        <GraphQLErrorList errors={errors} />
       )}
-      {post && <NewsSingle {...post} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage || site.heroImage} />}
+      {post && <Blog {...post} lang={lang || 'en'} />}
     </Layout>
   )
 }
 
-export default NewsTemplate
+export default BlogTemplate

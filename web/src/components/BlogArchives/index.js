@@ -26,15 +26,17 @@ const Item = styled.li`
 `
 
 const Heading = styled.span`
-  font-size: 4rem;
+  font-size: 3.6rem;
   font-weight: 700;
   color: ${colors.lightBlack};
   display: block;
   width: 100%;
-  margin: 0 0 4rem 0;
+  margin: 8rem 0 8rem 0;
+  text-align: center;
   @media (min-width: 768px) {
     font-size: 4.8rem;
-  }
+    margin: 12.8rem 0 12.8rem 0;
+ }
 `
 
 function BlogArchives (props) {

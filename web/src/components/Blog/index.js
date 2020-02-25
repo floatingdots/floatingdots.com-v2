@@ -8,7 +8,10 @@ import Divider from '../shared/divider'
 
 const Wrapper = styled.article`
   display: block;
-  margin: 8rem 0 0 0;
+  margin: 4rem 0 0 0;
+  @media (min-width: 768px) {
+    margin: 8rem 0 0 0;
+  }
 `
 
 const Projects = props => {

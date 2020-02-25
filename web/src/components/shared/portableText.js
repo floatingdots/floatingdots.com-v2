@@ -6,6 +6,12 @@ import serializers from './serializers'
 import {colors, fontfamily} from '../../lib/variables'
 
 const StyledBasePortableText = styled.div`
+  *{
+    font-size: 1.6rem;
+    @media (min-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
   h1,
   h2,
   h3,

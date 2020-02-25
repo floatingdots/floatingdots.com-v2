@@ -22,6 +22,7 @@ const StyledLink = styled(props => <Link {...props} />)`
   font-weight: 700;
   margin-top: 0.8rem;
   display: block;
+  line-height: 1.25;
 `
 
 const Title = styled.span`

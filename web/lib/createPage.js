@@ -1,13 +1,13 @@
 const pages = [
-  {slug: 'home', locales: ['home', 'common']}
-  // {slug: 'about', locales: ['home', 'common']}
+  {slug: 'home', locales: ['common']},
+  {slug: 'about', locales: ['common']}
 ]
 const buildI18nPages = require('./helpers')
 
 module.exports = async function createPagePages (graphql, actions, reporter) {
+  reporter.info('--------------------Pages----------------------')
   const currentDateTime = new Date().toISOString()
   const {createPage} = actions
-  reporter.info('--------------------Pages----------------------')
 
   const i18nPages = pages.map(p => buildI18nPages(
     null,

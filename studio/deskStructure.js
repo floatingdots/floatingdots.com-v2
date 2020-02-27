@@ -71,8 +71,34 @@ export default () =>
       S.listItem()
         .title('Pages')
         .icon(MdNote)
-        .schemaType('pages')
-        .child(S.documentTypeList('pages').title('Pages')),
+        .child(
+          S.list()
+            .title('Pages')
+            .items([
+              S.listItem()
+                .title('About')
+                .schemaType('about')
+                .icon(MdNote)
+                .child(
+                  S.editor()
+                    .title('About')
+                    .id('about')
+                    .schemaType('about')
+                    .documentId('about')
+                ),
+              S.listItem()
+                .title('Contact')
+                .schemaType('pages')
+                .icon(MdNote)
+                .child(
+                  S.editor()
+                    .title('Contact')
+                    .id('pages')
+                    .schemaType('pages')
+                    .documentId('pages')
+                )
+            ])
+        ),
       S.divider(),
       S.listItem()
         .title('Categories')

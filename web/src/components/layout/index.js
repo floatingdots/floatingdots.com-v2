@@ -82,8 +82,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   div[class^="portableText__"] {
-    max-width: 680px;
-    margin: 0 auto;
+    /* max-width: 680px; */
+    /* margin: 0 auto; */
   }
 
   /* Remove all animations and transitions for people that prefer not to see them */

@@ -18,6 +18,15 @@ module.exports = function createResolvers (createResolvers) {
         }
       }
     },
+    SanityLocaleShortText: {
+      locale: {
+        type: `String!`,
+        args: {language: {type: 'String'}},
+        resolve: (source, args) => {
+          return source[args.language] || ''
+        }
+      }
+    },
     SanityLocaleExcerptPortableText: {
       locale: {
         type: `JSON!`,

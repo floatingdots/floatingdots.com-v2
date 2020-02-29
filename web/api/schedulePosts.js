@@ -7,6 +7,9 @@ const parseISO = require('date-fns/parseISO')
 const {differenceInMinutes} = require('date-fns')
 
 module.exports = async (req, res) => {
+  if (req.method !== 'GET') {
+    res.status(405).end()
+  }
   let allRecords = []
   base('Production').select({
     view: 'Main',
@@ -28,22 +31,18 @@ module.exports = async (req, res) => {
           }, (err, record) => {
             if (err) {
               console.log(err)
-              res.status(500)
-              res.end()
+              res.status(500).end()
             }
             console.log(`Publisehd: ${record.get('title')}`)
-            res.status(201)
-            res.end()
+            res.status(201).end()
           })
         }).catch(() => {
-          res.status(500)
-          res.end()
+          res.status(500).end()
         })
       })
     } else {
       console.log('No scheduled post')
-      res.status(201)
-      res.end()
+      res.status(201).end()
     }
   })
 }

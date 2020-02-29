@@ -8,6 +8,7 @@
   },
   "builds": [
     { "src": "/web/package.json", "use": "@now/static-build" },
+    { "src": "/web/api/message/*.js", "use": "@now/node" },
     { "src": "/web/api/schedulePosts.js", "use": "@now/node" }
   ],
   "build": {
@@ -19,10 +20,18 @@
   },
   "env": {
     "AIRTABLE_APIKEY": "@airtable-apikey",
-    "AIRTABLE_BASE": "@fd-airtable-schedule-posts-base"
+    "AIRTABLE_BASE": "@fd-airtable-schedule-posts-base",
+    "POSTMARK_ACCESSTOKEN": "@fd-postmark-accesstoken",
+    "EMAIL_SENDER": "@fd-email-sender",
+    "EMAIL_RECEIVER": "@fd-email-receiver"
   },
   "trailingSlash": false,
+  "cleanUrls": true,
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/web/api/$1.js"
+    },
     {
       "source": "/(.*)",
       "destination": "/web/$1"
@@ -33,5 +42,10 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/studio(/?)",
+      "destination": "/about",
+      "statusCode": 301
+    }
   ]
 }

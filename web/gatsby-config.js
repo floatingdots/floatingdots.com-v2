@@ -86,6 +86,7 @@ module.exports = {
     'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-sitemap'
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-recaptcha'
   ]
 }

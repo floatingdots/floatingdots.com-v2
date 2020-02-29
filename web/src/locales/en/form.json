@@ -1,0 +1,17 @@
+{
+  "Submit": "Submit",
+  "Name": "Name",
+  "Email": "Email",
+  "Message": "Message",
+  "Required": "Required",
+  "Send": "Send Message",
+  "Sending": "Sending...",
+  "Sent": "Message was sent!",
+  "Please input your name": "Please input your name.",
+  "Please input your email": "Please input your email.",
+  "Your email address is invalid": "Your email address is invalid. \nPlease enter a valid address",
+  "Please input message": "Please input message.",
+  "Thank you": "Thnak you for submitting your message!",
+  "Invalid Email": "Failed to send an email to your email adderss.\nPlease check it, and send it again.",
+  "Failed": "Faild to submit.\nPlease send it again. Or send us an Email."
+}

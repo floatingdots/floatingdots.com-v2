@@ -16,7 +16,8 @@ export const colors = {
   gray: '#787774',
   blue: '#133EFF', // 0043ff
   red: '#FF5A5F',
-  green: '#A9DEAC'
+  green: '#A9DEAC',
+  lightBlue: '#2376F2'
 }
 
 export const fontfamily = {

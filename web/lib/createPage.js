@@ -1,6 +1,7 @@
 const pages = [
   {slug: 'home', locales: ['common']},
-  {slug: 'about', locales: ['common']}
+  {slug: 'about', locales: ['common']},
+  {slug: 'contact', locales: ['common', 'form']}
 ]
 const buildI18nPages = require('./helpers')
 

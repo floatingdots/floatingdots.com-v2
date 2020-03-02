@@ -9,9 +9,9 @@ const Wrapper = styled.header`
 const Title = styled.h1`
   font-size: 4rem;
   color: ${colors.lightBlack};
-  margin: 8rem 0;
+  margin: 0 0 8rem 0;
   @media (min-width: 768px) {
-    margin: 12.8rem 0;
+    margin: 0 0 12.8rem 0;
   }
 `
 

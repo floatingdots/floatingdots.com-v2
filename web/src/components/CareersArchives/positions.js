@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const StyledLink = styled(props => <Link {...props} />)`
   color: ${colors.blue};
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   margin-top: 0.8rem;
   display: block;
   line-height: 1.25;

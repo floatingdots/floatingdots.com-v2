@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import {useTranslation} from 'react-i18next'
 
 import Header from './header'
 import Body from './body'
 import Contact from '../shared/contact'
 import Divider from '../shared/divider'
+import BackButton from '../shared/backButton'
 
 const Wrapper = styled.article`
   display: block;
@@ -16,8 +18,11 @@ const Wrapper = styled.article`
 
 const Projects = props => {
   const {body, title, mainImage, publishedAt} = props
+  const {t} = useTranslation('common')
+
   return (
     <Wrapper>
+      <BackButton label={t('Back to Blog List')} to='/blog' />
       <Header title={title} mainImage={mainImage} publishedAt={publishedAt} />
       <Divider />
       <Body body={body} />

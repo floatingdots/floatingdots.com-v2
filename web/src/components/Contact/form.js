@@ -25,9 +25,9 @@ const ContactForm = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      name: '111',
-      email: '111@test.test',
-      message: '11'
+      name: '',
+      email: '',
+      message: ''
     },
     validationSchema: schema,
     onSubmit: async (values, {setSubmitting, setStatus, validateForm}) => {

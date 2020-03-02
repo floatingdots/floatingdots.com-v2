@@ -48,20 +48,31 @@ export default {
         'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
+      name: 'intro',
+      type: 'localeText',
+      title: 'Intro'
+    },
+    {
       Title: 'Body 1',
       name: 'body1',
-      type: 'aboutBody'
+      type: 'careersBody'
     },
     {
       Title: 'Body 2',
       name: 'body2',
-      type: 'aboutBody'
+      type: 'careersBody'
     },
     {
       Title: 'Body 3',
       name: 'body3',
-      type: 'aboutBody'
+      type: 'careersBody'
+    },
+    {
+      Title: 'Body 4',
+      name: 'body4',
+      type: 'careersBody'
     }
+
   ],
   orderings: [
     {

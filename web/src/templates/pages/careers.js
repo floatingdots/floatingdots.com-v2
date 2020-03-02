@@ -10,7 +10,7 @@ import GraphQLErrorList from '../../components/shared/graphql-error-list'
 import SEO from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
-import About from '../../components/About'
+import Careers from '../../components/Careers'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -35,7 +35,7 @@ export const query = graphql`
     }
   }
 
-  query AboutPageQuery( $language: String! ) {
+  query CareersPageQuery( $language: String!, $currentDatetime: Date! ) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       homeIntro{
@@ -45,7 +45,7 @@ export const query = graphql`
         locale(language: $language)
       }
     }
-    about: sanityAboutPage {
+    careers: sanityCareersPage {
       title{
         locale(language: $language)
       }
@@ -60,19 +60,15 @@ export const query = graphql`
           }
         }
       }
+      intro{
+        locale(language: $language)
+      }
       body1{
         title{
           locale(language: $language)
         }
         body{
           locale(language: $language)
-        }
-        mainImage{
-          asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp_noBase64
-            }
-          }
         }
       }
       body2{
@@ -82,13 +78,6 @@ export const query = graphql`
         body{
           locale(language: $language)
         }
-        mainImage{
-          asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp_noBase64
-            }
-          }
-        }
       }
       body3{
         title{
@@ -97,11 +86,32 @@ export const query = graphql`
         body{
           locale(language: $language)
         }
-        mainImage{
-          asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp_noBase64
-            }
+      }
+      body4{
+        title{
+          locale(language: $language)
+        }
+        body{
+          locale(language: $language)
+        }
+      }
+    }
+
+    positions: allSanityCareers(
+      limit: 99
+      sort: { fields: [publishedAt], order: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
+    ){
+      edges {
+        node {
+          _type
+          _id
+          publishedAt
+          title{
+            locale(language: $language)
+          }
+          slug {
+            current
           }
         }
       }
@@ -109,7 +119,7 @@ export const query = graphql`
   }
 `
 
-const AboutPage = props => {
+const IndexPage = props => {
   const {data, errors} = props
   if (errors) {
     return (
@@ -120,16 +130,21 @@ const AboutPage = props => {
   }
 
   const site = (data || {}).site
-  const page = (data || {}).about
+  const page = (data || {}).careers
+  const positionsNodes = (data || {}).positions
+    ? mapEdgesToNodes(data.positions)
+      .filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture)
+    : []
   return (
     <Layout isHome>
       <SEO
         title={site.title}
         description={site.description.locale}
       />
-      <About {...page} />
+      <Careers {...page} positionsNodes={positionsNodes} />
     </Layout>
   )
 }
 
-export default AboutPage
+export default IndexPage

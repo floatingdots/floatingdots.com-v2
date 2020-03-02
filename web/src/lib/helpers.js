@@ -30,6 +30,10 @@ export function getProjectsUrl (slug, locale) {
   return locale === 'en' ? `/projects/${slug.current || slug}/` : `/${locale}/projects/${slug.current || slug}/`
 }
 
+export function getCareersUrl (slug, locale) {
+  return locale === 'en' ? `/careers/${slug.current || slug}/` : `/${locale}/careers/${slug.current || slug}/`
+}
+
 export function getPublishdAt (publishedAt, locale) {
   if (locale === 'ja') {
     return `投稿日: ${(

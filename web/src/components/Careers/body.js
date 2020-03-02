@@ -36,35 +36,18 @@ const Text = styled.div`
   }
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
-  max-height: 160px;
-  border-radius: 4px;
-  width: 80%;
-  margin: 0 0 0 auto;
-  @media (min-width: 425px) {
-    max-height: 300px;
-  }
-  @media (min-width: 768px) {
-    max-height: 380px;
-  }
-`
-
-const ProjectsHeader = props => {
+const CareersBody = props => {
   const {bodies} = props
   return (
     <Wrapper>
       {
         bodies.map((body, i) => {
-          return body.title && body.mainImage && body.body &&
+          return body.title && body.body &&
           <Group key={i}>
             <Title>{body.title.locale}</Title>
             <Text>
               <PortableText blocks={body.body.locale} />
             </Text>
-            <StyledImg
-              className='image'
-              fluid={body.mainImage.asset.fluid}
-            />
           </Group>
         })
       }
@@ -72,4 +55,4 @@ const ProjectsHeader = props => {
   )
 }
 
-export default ProjectsHeader
+export default CareersBody

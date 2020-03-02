@@ -10,7 +10,7 @@ import GraphQLErrorList from '../../components/shared/graphql-error-list'
 import SEO from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
-import Careers from '../../components/Careers'
+import CareersArchives from '../../components/CareersArchives'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -142,7 +142,7 @@ const IndexPage = props => {
         title={site.title}
         description={site.description.locale}
       />
-      <Careers {...page} positionsNodes={positionsNodes} />
+      <CareersArchives {...page} positionsNodes={positionsNodes} />
     </Layout>
   )
 }

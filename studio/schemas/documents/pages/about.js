@@ -1,7 +1,7 @@
 export default {
-  name: 'about',
+  name: 'aboutPage',
   type: 'document',
-  title: 'About',
+  title: 'About Page',
   __experimental_actions: ['update', 'create', /* 'delete', */ 'publish'],
   initialValue: {
     publishedAt: (new Date()).toISOString()

@@ -1,27 +1,32 @@
-
+import React from 'react'
 import S from '@sanity/desk-tool/structure-builder'
 import EyeIcon from 'part:@sanity/base/eye-icon'
 import EditIcon from 'part:@sanity/base/edit-icon'
-import MdSettings from 'react-icons/lib/md/settings'
-import MdNote from 'react-icons/lib/md/note'
-import MdNew from 'react-icons/lib/md/fiber-new'
-import MdDesktopMac from 'react-icons/lib/md/desktop-mac'
-import MdLocalOffer from 'react-icons/lib/md/local-offer'
-import IframePreview from './components/previews/iframe/IframePreview'
+import {MdSettings, MdNote, MdCreate, MdDesktopMac, MdLocalOffer, MdPeople} from 'react-icons/lib/md'
+import IframePreview from './components/Previews/iframe/IframePreview'
 
-import React from 'react'
+const remoteURL = 'https://*****************.gtsb.io/'
+const localURL = 'http://localhost:8000'
+const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
-const url = 'https://*****************.gtsb.io/'
-const WebPreview = ({document}) => {
-  const {displayed} = document
-  return (
-    (displayed.slug && displayed.slug.current &&
-    <iframe
-      style={{width: 100 + '%', height: 100 + '%'}}
-      src={url + 'news/2045/01/' + displayed.slug.current}
-      frameBorder={0}
-    />) || <span>Please input slug</span>
-  )
+export const getDefaultDocumentNode = props => {
+  const {schemaType} = props
+  if (['blog', 'projects', 'careers', 'pages'].includes(schemaType)) {
+    return S.document().views([
+      S.view.form().icon(EditIcon),
+      S.view
+        .component(IframePreview)
+        .icon(EyeIcon)
+        .title('Web preview - En')
+        .options({previewURL}),
+      S.view
+        .component(IframePreview)
+        .icon(EyeIcon)
+        .title('Web preview - Ja')
+        .options({previewURL, locale: 'ja'})
+    ])
+  }
+  return S.document().views([S.view.form()])
 }
 
 export default () =>
@@ -30,44 +35,18 @@ export default () =>
     .items([
       S.listItem()
         .title('Blog')
-        .icon(MdNew)
+        .icon(MdCreate)
         .schemaType('blog')
-        .child(
-          S.documentTypeList('blog')
-            .title('Blog')
-            .child(documentId =>
-              S.document()
-                .documentId(documentId)
-                .schemaType('blog')
-                .views([
-                  S.view.form().icon(EditIcon),
-                  S.view
-                    .component(WebPreview)
-                    .icon(EyeIcon)
-                    .title('Web Preview')
-                ])
-            )
-        ),
+        .child(S.documentTypeList('blog').title('Blog')),
       S.listItem()
         .title('Projects')
         .icon(MdDesktopMac)
-        .schemaType('projects')
-        .child(
-          S.documentTypeList('projects')
-            .title('Projects')
-            .child(documentId =>
-              S.document()
-                .documentId(documentId)
-                .schemaType('projects')
-                .views([
-                  S.view.form().icon(EditIcon),
-                  S.view
-                    .component(WebPreview)
-                    .icon(EyeIcon)
-                    .title('Web Preview')
-                ])
-            )
-        ),
+        .child(S.documentTypeList('projects').title('Projects')),
+      S.listItem()
+        .title('Careers')
+        .icon(MdPeople)
+        .schemaType('careers')
+        .child(S.documentTypeList('careers').title('Careers')),
       S.listItem()
         .title('Pages')
         .icon(MdNote)
@@ -77,25 +56,74 @@ export default () =>
             .items([
               S.listItem()
                 .title('About')
-                .schemaType('about')
                 .icon(MdNote)
                 .child(
                   S.editor()
                     .title('About')
-                    .id('about')
-                    .schemaType('about')
+                    .schemaType('aboutPage')
                     .documentId('about')
+                    .views([
+                      S.view.form().icon(EditIcon),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web Preview')
+                        .options({previewURL}),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web preview - Ja')
+                        .options({previewURL, locale: 'ja'})
+                    ])
+                ),
+              S.listItem()
+                .title('Careers')
+                .icon(MdNote)
+                .child(
+                  S.editor()
+                    .title('Careers')
+                    .schemaType('careersPage')
+                    .documentId('careers')
+                    .views([
+                      S.view.form().icon(EditIcon),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web Preview')
+                        .options({previewURL}),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web preview - Ja')
+                        .options({previewURL, locale: 'ja'})
+                    ])
                 ),
               S.listItem()
                 .title('Contact')
-                .schemaType('pages')
                 .icon(MdNote)
                 .child(
                   S.editor()
                     .title('Contact')
-                    .id('pages')
                     .schemaType('pages')
-                    .documentId('pages')
+                    .documentId('contact')
+                    .views([
+                      S.view.form().icon(EditIcon),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web Preview')
+                        .options({previewURL}),
+                      S.view
+                        .component(IframePreview)
+                        .icon(EyeIcon)
+                        .title('Web preview - Ja')
+                        .options({previewURL, locale: 'ja'})
+                    ])
+                ),
+              S.divider(),
+              S.listItem()
+                .title('All pages with schemas pages')
+                .child(S.documentTypeList('pages')
                 )
             ])
         ),

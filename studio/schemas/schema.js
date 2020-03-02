@@ -3,8 +3,10 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import blog from './documents/blog'
 import projects from './documents/projects'
+import careers from './documents/careers'
 import pages from './documents/pages'
-import about from './documents/about'
+import aboutPage from './documents/pages/about'
+import careersPage from './documents/pages/careers'
 import category from './documents/category'
 import siteSettings from './documents/siteSettings'
 
@@ -26,8 +28,10 @@ export default createSchema({
     siteSettings,
     projects,
     blog,
+    careers,
     pages,
-    about,
+    aboutPage,
+    careersPage,
     category,
     mainImage,
     bodyPortableText,

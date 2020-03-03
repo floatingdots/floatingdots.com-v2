@@ -68,10 +68,12 @@ const StyledBasePortableText = styled.div`
   }
  `
 
-const PortableText = ({blocks}) => (
-  <StyledBasePortableText>
-    <BasePortableText blocks={blocks} serializers={serializers} {...clientConfig.sanity} />
-  </StyledBasePortableText>
-)
+const PortableText = ({blocks}) => {
+  return Object.entries(blocks).length !== 0 && blocks.constructor !== Object && (
+    <StyledBasePortableText>
+      <BasePortableText blocks={blocks} serializers={serializers} {...clientConfig.sanity} />
+    </StyledBasePortableText>
+  )
+}
 
 export default PortableText

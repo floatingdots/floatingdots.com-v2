@@ -57,15 +57,17 @@ const StyledLink = styled(props => <Link {...props} />)`
 `
 const MobileNav = ({onHideNav, onShowNav, showNav}) => {
   const {i18n} = useTranslation()
+  const _w = typeof window !== 'undefined' && window
+
   return (
     <Wrapper className={(showNav && 'active')}>
       <Inner>
         <List>
-          <Item><StyledLink onClick={onHideNav} to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
-          <Item><StyledLink onClick={onHideNav} to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
-          <Item><StyledLink onClick={onHideNav} to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
-          <Item><StyledLink onClick={onHideNav} to={i18n.language === 'en' ? '/contact/' : `/${i18n.language}/contact/`}>Contact</StyledLink></Item>
-          <Item><StyledLink onClick={onHideNav} to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') ? onHideNav : null} to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') ? onHideNav : null} to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') ? onHideNav : null} to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') ? onHideNav : null} to={i18n.language === 'en' ? '/contact/' : `/${i18n.language}/contact/`}>Contact</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') ? onHideNav : null} to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
         </List>
         <LanguageSwitcher />
       </Inner>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 import styled from 'styled-components'
 import {useTranslation} from 'react-i18next'
 
@@ -20,7 +20,7 @@ const Title = styled.h1`
   }
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
   margin: 0 0 8rem 0;
   border-radius: 4px;
   max-height: 260px;
@@ -40,8 +40,8 @@ const CareersHeader = props => {
       }
       {mainImage && mainImage.asset &&
         <StyledImg
-          className='image'
           loading='eager'
+          id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
         />
       }

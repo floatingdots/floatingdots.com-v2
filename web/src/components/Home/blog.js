@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next'
 
 import {getBlogUrl, getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 
 const Wrapper = styled.div`
   display: block;
@@ -37,7 +37,7 @@ const DateTime = styled.time`
   margin: 0 0.8rem 0 0;
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
   transition: transform 250ms ease-in-out;
   max-width: 100%;
   margin: 0 0 0 auto;
@@ -50,8 +50,7 @@ function Blog (props) {
   return (
     <Wrapper>
       <StyledImg
-        className='image'
-        backgroundColor='#fff'
+        id={mainImage.asset.id}
         fluid={mainImage.asset.fluid}
       />
       <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>

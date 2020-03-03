@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 import styled from 'styled-components'
 import {useTranslation} from 'react-i18next'
 
@@ -19,7 +19,7 @@ const Title = styled.h1`
 
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
 `
 
 const DateTime = styled.time`
@@ -38,8 +38,8 @@ const BlogHeader = props => {
     <Wrapper>
       {mainImage && mainImage.asset &&
         <StyledImg
-          className='image'
           loading='eager'
+          id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
         />
       }

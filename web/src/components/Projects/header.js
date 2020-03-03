@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 import styled from 'styled-components'
 import {colors} from '../../lib/variables'
 
@@ -19,16 +19,15 @@ const SubTitle = styled.h2`
   white-space: pre-line;
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
 `
 
 const ProjectsHeader = props => {
-  const {title, subTitle, slug, mainImage} = props
+  const {title, subTitle, mainImage} = props
   return (
     <Wrapper>
       {mainImage && mainImage.asset &&
         <StyledImg
-          className='image'
           loading='eager'
           fluid={mainImage.asset.fluid}
         />

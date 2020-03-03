@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 import {colors} from '../../lib/variables'
 import PortableText from '../../components/shared/portableText'
 
@@ -36,7 +36,7 @@ const Text = styled.div`
   }
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
   max-height: 160px;
   border-radius: 4px;
   width: 80%;
@@ -62,7 +62,7 @@ const ProjectsHeader = props => {
               <PortableText blocks={body.body.locale} />
             </Text>
             <StyledImg
-              className='image'
+              id={body.mainImage.asset.id}
               fluid={body.mainImage.asset.fluid}
             />
           </Group>

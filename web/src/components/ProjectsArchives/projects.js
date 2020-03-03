@@ -3,7 +3,7 @@ import React from 'react'
 import {Link} from 'gatsby'
 import {useTranslation} from 'react-i18next'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 
 import {getProjectsUrl} from '../../lib/helpers'
 import Icon from '../shared/Icon/'
@@ -43,7 +43,7 @@ const Title = styled.span`
   }
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
   transition: transform 250ms ease-in-out;
   max-width: 72%;
   margin: 0 0 0 auto;
@@ -62,7 +62,7 @@ function Projects (props) {
         </Heading>
         <StyledImg
           className='image'
-          backgroundColor='#fff'
+          placeholderStyle={{filter: 'blur(30px)', opacity: '0.8'}}
           fluid={mainImage.asset.fluid}
         />
       </StyledLink>

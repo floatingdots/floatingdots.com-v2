@@ -8,7 +8,7 @@ import ja from 'date-fns/locale/ja'
 
 import {getBlogUrl, getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
-import Img from 'gatsby-image'
+import ImgLQIP from '../shared/imgLqip'
 
 const Wrapper = styled.div`
   display: block;
@@ -41,8 +41,7 @@ const DateTime = styled.time`
   margin: 0 0.8rem 0 0;
 `
 
-const StyledImg = styled(props => <Img {...props} />)`
-  transition: transform 250ms ease-in-out;
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
   max-width: 100%;
   margin: 0 0 0 auto;
 `
@@ -55,8 +54,7 @@ function Preview (props) {
     <Wrapper>
       <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
         <StyledImg
-          className='image'
-          backgroundColor='#fff'
+          id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
         />
       </StyledLink>

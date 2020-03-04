@@ -14,6 +14,7 @@ import bodyPortableText from './objects/bodyPortableText'
 import bioPortableText from './objects/bioPortableText'
 import excerptPortableText from './objects/excerptPortableText'
 import mainImage from './objects/mainImage'
+import fileDownload from './objects/fileDownload'
 import youtube from './objects/youtube'
 import localeString from './objects/locale/String'
 import localeText from './objects/locale/Text'
@@ -35,6 +36,7 @@ export default createSchema({
     careersPage,
     category,
     mainImage,
+    fileDownload,
     bodyPortableText,
     bioPortableText,
     excerptPortableText,

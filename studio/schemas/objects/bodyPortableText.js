@@ -1,3 +1,9 @@
+import React from 'react'
+import {MdLink, MdTextFields} from 'react-icons/lib/md'
+const smallRender = props => (
+  <span style={{fontSize: '0.9rem'}}>{props.children}</span>
+)
+
 export default {
   name: 'bodyPortableText',
   type: 'array',
@@ -23,32 +29,72 @@ export default {
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
-        decorators: [{title: 'Strong', value: 'strong'}, {title: 'Emphasis', value: 'em'}],
+        decorators: [
+          {title: 'Strong', value: 'strong'},
+          {title: 'Small',
+            value: 'small',
+            blockEditor: {
+              icon: MdTextFields,
+              render: smallRender
+            }
+          },
+          {title: 'Emphasis', value: 'em'}],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            name: 'link',
+            name: 'internalLink',
             type: 'object',
-            title: 'URL',
+            title: 'Internal link',
+            blockEditor: {
+              icon: MdLink
+            },
             fields: [
               {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-                validation: Rule => Rule.uri({
-                  allowRelative: true,
-                  scheme: ['https', 'http', 'mailto', 'tel']
-                })
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  {type: 'blog'},
+                  {type: 'projects'},
+                  {type: 'careers'},
+                  {type: 'pages'},
+                  {type: 'aboutPage'},
+                  {type: 'careersPage'}
+                ]
+              },
+              {
+                name: 'link',
+                type: 'object',
+                title: 'External link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                    validation: Rule => Rule.uri({
+                      allowRelative: false,
+                      scheme: ['https', 'http', 'mailto', 'tel']
+                    })
+                  },
+                  {
+                    title: '_blank',
+                    name: 'blank',
+                    type: 'boolean'
+                  }
+                ]
               }
             ]
           }
         ]
       }
-      // of: [{type: 'authorReference'}]
     },
     {
       type: 'mainImage',
       options: {hotspot: true}
+    },
+    {
+      type: 'fileDownload',
+      title: 'File'
     },
     {
       type: 'youtube'

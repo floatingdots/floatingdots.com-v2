@@ -49,10 +49,12 @@ function Blog (props) {
 
   return (
     <Wrapper>
-      <StyledImg
-        id={mainImage.asset.id}
-        fluid={mainImage.asset.fluid}
-      />
+      {mainImage && mainImage.asset &&
+        <StyledImg
+          id={mainImage.asset.id}
+          fluid={mainImage.asset.fluid}
+        />
+      }
       <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
         <Title>{title.locale}</Title>
       </StyledLink>

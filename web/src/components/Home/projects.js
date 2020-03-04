@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  &:hover .image{
+  &:hover .hover{
     transform: scale(1.05);
   }
 `
@@ -45,7 +45,7 @@ const Title = styled.span`
 
 const StyledImg = styled(props => <ImgLQIP {...props} />)`
   transition: transform 250ms ease-in-out;
-  max-width: 72%;
+  max-width: 80%;
   margin: 0 0 0 auto;
 `
 
@@ -60,6 +60,7 @@ function Projects (props) {
           <Icon symbol='arrow' options='forward' />
         </Heading>
         <StyledImg
+          className='hover'
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
         />

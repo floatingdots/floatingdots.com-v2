@@ -13,7 +13,6 @@ const assemblePostUrl = ({displayed, options}) => {
   const {slug, _type, publishedAt} = displayed
   const {locale} = options
   let {previewURL} = options
-  console.log(locale)
   if (!slug || !previewURL) {
     console.warn('Missing slug or previewURL', {slug, previewURL})
     return ''

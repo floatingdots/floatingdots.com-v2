@@ -1,11 +1,15 @@
 {
-  "name": "foatingdots-studio",
-  "version": 2,
   "scope": "floatingdots",
+  "version": 2,
   "public": false,
   "github": {
     "enabled": true,
     "autoAlias": false
+  },
+  "build": {
+    "env": {
+      "SANITY_STUDIO_GATSBY_PREVIEW_URL": "@fd-gatsby-preview-url"
+    }
   },
   "routes": [
     { "handle": "filesystem" },

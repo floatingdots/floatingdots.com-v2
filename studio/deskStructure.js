@@ -5,7 +5,8 @@ import EditIcon from 'part:@sanity/base/edit-icon'
 import {MdSettings, MdNote, MdCreate, MdDesktopMac, MdLocalOffer, MdPeople} from 'react-icons/lib/md'
 import IframePreview from './components/Previews/iframe/IframePreview'
 
-const remoteURL = 'https://*****************.gtsb.io/'
+// https://www.sanity.io/docs/studio-environment-variables
+const remoteURL = process.env.SANITY_STUDIO_GATSBY_PREVIEW_URL
 const localURL = 'http://localhost:8000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 

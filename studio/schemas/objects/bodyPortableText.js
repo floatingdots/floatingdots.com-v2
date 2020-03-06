@@ -1,5 +1,5 @@
 import React from 'react'
-import {MdLink, MdTextFields} from 'react-icons/lib/md'
+import {MdLink, MdTextFields, MdOpenInNew} from 'react-icons/lib/md'
 const smallRender = props => (
   <span style={{fontSize: '0.9rem'}}>{props.children}</span>
 )
@@ -12,10 +12,6 @@ export default {
     {
       type: 'block',
       title: 'Block',
-      // Styles let you set what your user can mark up blocks with. These
-      // corrensponds with HTML tags, but you can set any title or value
-      // you want and decide how you want to deal with it where you want to
-      // use your content.
       styles: [
         {title: 'Normal', value: 'normal'},
         {title: 'H1', value: 'h1'},
@@ -24,11 +20,11 @@ export default {
         {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'}
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}, {title: 'Number', value: 'number'}],
-      // Marks let you mark up inline text in the block editor.
+      lists: [
+        {title: 'Bullet', value: 'bullet'},
+        {title: 'Number', value: 'number'}
+      ],
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Small',
@@ -39,7 +35,6 @@ export default {
             }
           },
           {title: 'Emphasis', value: 'em'}],
-        // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
             name: 'internalLink',
@@ -60,36 +55,41 @@ export default {
                   {type: 'pages'},
                   {type: 'aboutPage'},
                   {type: 'careersPage'}
-                ]
+                ],
+                validation: Rule => Rule.required()
+              }
+            ]
+          },
+          {
+            name: 'link',
+            type: 'object',
+            title: 'External link',
+            blockEditor: {
+              icon: MdOpenInNew
+            },
+            fields: [
+              {
+                name: 'href',
+                type: 'url',
+                title: 'URL',
+                validation: Rule => Rule.uri({
+                  allowRelative: false,
+                  scheme: ['https', 'http', 'mailto', 'tel']
+                }).required()
               },
               {
-                name: 'link',
-                type: 'object',
-                title: 'External link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'URL',
-                    validation: Rule => Rule.uri({
-                      allowRelative: false,
-                      scheme: ['https', 'http', 'mailto', 'tel']
-                    })
-                  },
-                  {
-                    title: '_blank',
-                    name: 'blank',
-                    type: 'boolean'
-                  }
-                ]
+                title: '_blank',
+                name: 'blank',
+                type: 'boolean'
               }
             ]
           }
+
         ]
       }
     },
     {
-      type: 'mainImage',
+      type: 'bodyImage',
       options: {hotspot: true}
     },
     {

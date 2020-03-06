@@ -13,6 +13,7 @@ import siteSettings from './documents/siteSettings'
 import bodyPortableText from './objects/bodyPortableText'
 import bioPortableText from './objects/bioPortableText'
 import excerptPortableText from './objects/excerptPortableText'
+import bodyImage from './objects/bodyImage'
 import mainImage from './objects/mainImage'
 import fileDownload from './objects/fileDownload'
 import youtube from './objects/youtube'
@@ -35,6 +36,7 @@ export default createSchema({
     aboutPage,
     careersPage,
     category,
+    bodyImage,
     mainImage,
     fileDownload,
     bodyPortableText,

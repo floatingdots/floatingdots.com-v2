@@ -1,3 +1,5 @@
+import {ValidationLocaleRequired} from '../lib/helper'
+
 export default {
   name: 'mainImage',
   type: 'image',
@@ -5,6 +7,14 @@ export default {
   options: {
     hotspot: true
   },
+  validation: Rule => Rule.custom(el => {
+    const {asset} = el
+    if (!asset || !asset._ref) {
+      console.log('antusntusnts')
+      return 'Image is Required.'
+    }
+    return true
+  }),
   fields: [
     {
       name: 'caption',
@@ -13,6 +23,15 @@ export default {
       options: {
         isHighlighted: true
       }
+      },
+      validation: Rule =>
+        Rule.custom(el => {
+          const result = ValidationLocaleRequired(el, 'Image Alt')
+          if (result) {
+            return result
+          }
+          return true
+        })
     },
     {
       name: 'alt',

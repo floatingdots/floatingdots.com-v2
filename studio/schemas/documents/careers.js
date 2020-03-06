@@ -52,29 +52,21 @@ export default {
   ],
   orderings: [
     {
-      name: 'publishingDateAsc',
-      title: 'Publishing date new–>old',
-      by: [
-        {
-          field: 'publishedAt',
-          direction: 'asc'
-        },
-        {
-          field: 'title',
-          direction: 'asc'
-        }
-      ]
-    },
-    {
       name: 'publishingDateDesc',
-      title: 'Publishing date old->new',
+      title: 'Publishing date newest',
       by: [
         {
           field: 'publishedAt',
           direction: 'desc'
-        },
+        }
+      ]
+    },
+    {
+      name: 'publishingDateAsc',
+      title: 'Publishing date oldest',
+      by: [
         {
-          field: 'title',
+          field: 'publishedAt',
           direction: 'asc'
         }
       ]

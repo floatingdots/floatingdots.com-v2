@@ -14,8 +14,8 @@ const Wrapper = styled.footer`
 const Inner = styled.div`
   max-width: 1024px;
   margin: 0 auto;
-  padding: 4rem 16px 2rem 16px;
-  @media (min-width: 1024px) {
+  padding: 8rem 16px 2rem 16px;
+  @media (min-width: 768px) {
     padding: 8rem 32px 4rem 32px;
     margin-top: 8rem;
   }
@@ -57,7 +57,8 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  margin: 0 0 3.6rem 0;
+  margin: 0 0 4.8rem 0;
+  line-height: 1;
 `
 
 const StyledLink = styled(props => <Link {...props} />)`

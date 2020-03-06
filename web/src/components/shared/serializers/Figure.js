@@ -1,7 +1,17 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import {getFluidGatsbyImage} from 'gatsby-source-sanity'
+import styled from 'styled-components'
 import clientConfig from '../../../../lib/client-config'
+import {getFluidGatsbyImage} from 'gatsby-source-sanity'
+
+import {colors} from '../../../lib/variables'
+
+const Caption = styled.figcaption`
+  color: ${colors.lightBlack};
+  font-size: 1.2rem;
+  letter-spacing: 0.02rem;
+  margin: 0.4rem 0 0 0;
+`
 
 export default ({node}) => {
   if (!node || !node.asset || !node.asset._ref) { return null }
@@ -13,7 +23,7 @@ export default ({node}) => {
   return (
     <figure>
       <Img fluid={fluidProps} alt={node.alt} />
-      <figcaption>{node.caption}</figcaption>
+      <Caption>{node.caption}</Caption>
     </figure>
   )
 }

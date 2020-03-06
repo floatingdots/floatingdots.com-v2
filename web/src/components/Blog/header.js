@@ -41,6 +41,7 @@ const BlogHeader = props => {
           loading='eager'
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
+          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       }
       {title && title.locale &&

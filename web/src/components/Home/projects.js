@@ -63,6 +63,7 @@ function Projects (props) {
           className='hover'
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
+          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       </StyledLink>
     </Wrapper>

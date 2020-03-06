@@ -20,7 +20,7 @@ const Wrapper = styled.nav`
   pointer-events: none;
   transition: all 0.2s linear;
   opacity: 0;
-  padding: 8rem 1.6rem 8rem 2rem;
+  padding: 8rem 1.6rem 20rem 2rem;
   &.active{
     opacity: 0.98;
     pointer-events: auto;
@@ -60,16 +60,16 @@ const MobileNav = ({onHideNav, onShowNav, showNav}) => {
   const _w = typeof window !== 'undefined' && window
 
   return (
-    <Wrapper className={(showNav && 'active')}>
+    <Wrapper id='nav'className={(showNav && 'active')}>
       <Inner>
         <List>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') ? onHideNav : null} to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') ? onHideNav : null} to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') ? onHideNav : null} to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') ? onHideNav : null} to={i18n.language === 'en' ? '/contact/' : `/${i18n.language}/contact/`}>Contact</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') ? onHideNav : null} to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') && onHideNav} to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') && onHideNav} to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') && onHideNav} to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') && onHideNav} to={i18n.language === 'en' ? '/contact/' : `/${i18n.language}/contact/`}>Contact</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') && onHideNav} to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
         </List>
-        <LanguageSwitcher />
+        <LanguageSwitcher onHideNav={onHideNav} />
       </Inner>
     </Wrapper>
   )

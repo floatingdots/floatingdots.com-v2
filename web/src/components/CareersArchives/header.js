@@ -43,6 +43,7 @@ const CareersHeader = props => {
           loading='eager'
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
+          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       }
     </Wrapper>

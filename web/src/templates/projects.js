@@ -47,7 +47,9 @@ export const query = graphql`
           }
         }
         ...SanityImage
-        alt
+        alt{
+          locale(language: $language)
+        }
       }
       slug {
         current
@@ -83,14 +85,13 @@ const ProjectsTemplate = props => {
   }
 
   const post = data && data.post
-  const site = data && data.site
 
   return (
     <Layout>
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
       {post && <Projects {...post} />}
 
     </Layout>

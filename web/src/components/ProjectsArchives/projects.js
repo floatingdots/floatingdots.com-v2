@@ -62,8 +62,8 @@ function Projects (props) {
         </Heading>
         <StyledImg
           className='image'
-          placeholderStyle={{filter: 'blur(30px)', opacity: '0.8'}}
           fluid={mainImage.asset.fluid}
+          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       </StyledLink>
     </Wrapper>

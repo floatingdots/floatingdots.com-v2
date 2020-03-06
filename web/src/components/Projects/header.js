@@ -10,7 +10,8 @@ const Wrapper = styled.header`
 const Title = styled.h1`
   font-size: 4rem;
   color: ${colors.lightBlack};
-  margin-top: 4rem;
+  line-height: 1;
+  margin: 4rem 0 1.6rem 0;
 `
 
 const SubTitle = styled.h2`
@@ -30,6 +31,7 @@ const ProjectsHeader = props => {
         <StyledImg
           loading='eager'
           fluid={mainImage.asset.fluid}
+          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       }
       {title && title.locale &&

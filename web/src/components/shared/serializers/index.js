@@ -7,13 +7,11 @@ import FileDownload from './FileDownload'
 const serializers = {
   marks: {
     internalLink: ({mark, children}) => {
-      console.log(mark, children)
       const {slug = {}} = mark
       const href = `/${slug.current}`
       return <Link to={href}>{children}</Link>
     },
     link: ({mark, children}) => {
-      console.log(mark.href)
       const {blank, href} = mark
       return blank
         ? <a href={href} target='_blank' rel='noopener'>{children}</a>
@@ -23,7 +21,7 @@ const serializers = {
   },
   types: {
     // authorReference: ({node}) => <span>{node.author.name}</span>,
-    mainImage: Figure,
+    bodyImage: Figure,
     youtube: YouTube,
     fileDownload: FileDownload
   }

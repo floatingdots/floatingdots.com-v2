@@ -48,7 +48,9 @@ export const query = graphql`
           }
         }
         ...SanityImage
-        alt
+        alt{
+          locale(language: $language)
+        }
       }
       title{
         locale(language: $language)
@@ -74,7 +76,7 @@ const BlogTemplate = props => {
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
       {post && <Blog {...post} />}
     </Layout>
   )

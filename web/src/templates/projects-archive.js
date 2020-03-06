@@ -68,7 +68,7 @@ const ProjectsArchivesTemplate = props => {
       {errors && <SEO title='GraphQL Error' />}
       <SEO
         title={site.title}
-        description={site.description}
+        description={site.description.locale}
       />
 
       {errors && (

@@ -64,6 +64,7 @@ const ProjectsHeader = props => {
             <StyledImg
               id={body.mainImage.asset.id}
               fluid={body.mainImage.asset.fluid}
+              alt={(body.mainImage.alt && body.mainImage.alt.locale) || ' '}
             />
           </Group>
         })

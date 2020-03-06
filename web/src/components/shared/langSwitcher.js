@@ -30,9 +30,11 @@ const StyledLink = styled(props => <Link {...props} />)`
   }
 `
 
-const LangSwitcher = () => {
+const LangSwitcher = ({onHideNav}) => {
   const alternateLinks = useContext(AlternateLinksContext)
   const {t, i18n} = useTranslation(['common'])
+  const _w = typeof window !== 'undefined' && window
+
   return (
     <Wrapper>
       <Title>Seect Language</Title>
@@ -44,7 +46,7 @@ const LangSwitcher = () => {
             to={link.path}
             hrefLang={link.language}
             className={link.language === i18n.language && 'active'}
-            onClick={() => { window.localStorage.setItem('lang', link.language) }}
+            onClick={() => { _w.localStorage.setItem('lang', link.language); _w && _w.location.pathname.split('/').includes(link.language) && onHideNav() }}
           >
             {t(link.language)}
           </StyledLink>

@@ -1,10 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import {Link} from 'gatsby'
 import {useTranslation} from 'react-i18next'
-
-import {format, formatDistanceToNow, differenceInDays, parseISO} from 'date-fns'
-import ja from 'date-fns/locale/ja'
+import styled from 'styled-components'
 
 import {getBlogUrl, getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
@@ -28,13 +25,6 @@ const StyledLink = styled(props => <Link {...props} />)`
 const Title = styled.span`
 `
 
-const DateCats = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
-  margin-top: 0.8rem;
-`
-
 const DateTime = styled.time`
   display: block;
   color: ${colors.lightBlack};
@@ -51,20 +41,25 @@ function Preview (props) {
   const {i18n} = useTranslation()
 
   return (
-    <Wrapper>
-      <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-        <StyledImg
-          id={mainImage.asset.id}
-          fluid={mainImage.asset.fluid}
-        />
-      </StyledLink>
-      <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-        <Title>{title.locale}</Title>
-      </StyledLink>
-      <DateTime>
-        {getPublishdAt(publishedAt, i18n.language)}
-      </DateTime>
-    </Wrapper>
+    <>
+      {title && publishedAt && slug && mainImage &&
+      <Wrapper>
+        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+          <StyledImg
+            id={mainImage.asset.id}
+            fluid={mainImage.asset.fluid}
+            alt={(mainImage.alt && mainImage.alt.locale) || ' '}
+          />
+        </StyledLink>
+        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+          <Title>{title.locale}</Title>
+        </StyledLink>
+        <DateTime>
+          {getPublishdAt(publishedAt, i18n.language)}
+        </DateTime>
+      </Wrapper>
+      }
+    </>
   )
 }
 

@@ -46,6 +46,9 @@ export const query = graphql`
       title{
         locale(language: $language)
       }
+      excerpt{
+        locale(language: $language)
+      }
       body{
         locale(language: $language)
       }
@@ -64,14 +67,13 @@ const CareersTemplate = props => {
   }
 
   const post = data && data.post
-  const site = data && data.site
 
   return (
     <Layout>
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={site.mainImage} />}
+      {post && <SEO title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
       {post && <Careers {...post} />}
 
     </Layout>

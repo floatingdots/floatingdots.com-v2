@@ -70,6 +70,9 @@ export const query = graphql`
                 ...GatsbySanityImageFluid_withWebp
               }
             }
+            alt{
+              locale(language: $language)
+            }
           }
         }
       }
@@ -93,6 +96,9 @@ export const query = graphql`
               fluid(maxWidth: 1024, maxHeight: 400) {
                 ...GatsbySanityImageFluid_withWebp
               }
+            }
+            alt{
+              locale(language: $language)
             }
           }
         }

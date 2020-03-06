@@ -78,7 +78,6 @@ const GlobalStyle = createGlobalStyle`
   textarea,
   select {
     font: inherit;
-    inner-shadow: none;
   }
 
   div[class^="portableText__"] {

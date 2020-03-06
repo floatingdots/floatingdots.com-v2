@@ -7,7 +7,6 @@ import careers from './documents/careers'
 import pages from './documents/pages'
 import aboutPage from './documents/pages/about'
 import careersPage from './documents/pages/careers'
-import category from './documents/category'
 import siteSettings from './documents/siteSettings'
 
 import bodyPortableText from './objects/bodyPortableText'
@@ -35,14 +34,13 @@ export default createSchema({
     pages,
     aboutPage,
     careersPage,
-    category,
     bodyImage,
     mainImage,
     fileDownload,
+    youtube,
     bodyPortableText,
     bioPortableText,
     excerptPortableText,
-    youtube,
     localeString,
     localeText,
     localeShortText,

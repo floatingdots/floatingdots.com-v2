@@ -1,4 +1,3 @@
-
 export default {
   name: 'pages',
   type: 'document',
@@ -11,14 +10,12 @@ export default {
     {
       name: 'title',
       type: 'localeString',
-      title: 'Title',
-      description: 'Titles should be catchy, descriptive, and not too long'
+      title: 'Title'
     },
     {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description: 'Some frontends will require a slug to be set to be able to show the post',
       options: {
         source: 'title.en',
         maxLength: 96
@@ -44,8 +41,7 @@ export default {
       name: 'excerpt',
       type: 'localeExcerptPortableText',
       title: 'Excerpt',
-      description:
-        'This ends up on summary pages, on Google, when people share your post in social media.'
+      description: 'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
       name: 'body',

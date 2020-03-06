@@ -130,12 +130,6 @@ export default () =>
         ),
       S.divider(),
       S.listItem()
-        .title('Categories')
-        .icon(MdLocalOffer)
-        .schemaType('category')
-        .child(S.documentTypeList('category').title('Categories')),
-      S.divider(),
-      S.listItem()
         .title('Image Assets')
         .child(S.documentTypeList('sanity.imageAsset')
           .filter('extension == "jpg" || extension == "jpeg" || extension == "gif" || extension == "png" ')

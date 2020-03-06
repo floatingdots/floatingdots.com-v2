@@ -23,8 +23,8 @@ export default {
     {
       name: 'socialImage',
       type: 'mainImage',
-      title: 'SNS用画像',
-      description: 'SNS共有などで利用するデフォルト画像'
+      title: 'Image for Social media sharing',
+      description: 'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
       name: 'address',

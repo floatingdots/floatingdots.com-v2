@@ -1,9 +1,9 @@
 /* eslint-disable react/no-multi-comp, react/display-name */
-import React from 'react';
-import humanizeList from 'humanize-list';
-import PropTypes from 'prop-types';
-import { FaFilm, FaYouTube, FaVimeo } from 'react-icons/fa';
-import styles from './VideoEmbedPreview.css';
+import React from 'react'
+import humanizeList from 'humanize-list'
+import PropTypes from 'prop-types'
+import {FaFilm, FaYouTube, FaVimeo} from 'react-icons/fa'
+import styles from './VideoEmbedPreview.css'
 
 export const SUPPORTED_SERVICES = [
   // .id in entries here must match the `service` id returned from from getVideoId,
@@ -12,26 +12,26 @@ export const SUPPORTED_SERVICES = [
     id: 'youtube',
     title: 'YouTube',
     url: id => `https://www.youtube.com/embed/${id}?rel=0`,
-    icon: FaYouTube,
+    icon: FaYouTube
   },
   {
     id: 'vimeo',
     title: 'Vimeo',
     url: id => `https://player.vimeo.com/video/${id}`,
-    icon: FaVimeo,
-  },
-];
+    icon: FaVimeo
+  }
+]
 
 export default class VideoEmbedPreview extends React.Component {
   static propTypes = {
     value: PropTypes.shape({
       service: PropTypes.string,
-      id: PropTypes.string,
-    }),
+      id: PropTypes.string
+    })
   }
 
-  render() {
-    const { value } = this.props;
+  render () {
+    const {value} = this.props
 
     if (!value || !value.id) {
       return (
@@ -39,10 +39,10 @@ export default class VideoEmbedPreview extends React.Component {
           <div />
           <FaFilm size={30} />
         </div>
-      );
+      )
     }
 
-    const service = value && SUPPORTED_SERVICES.find(s => s.id === value.service);
+    const service = value && SUPPORTED_SERVICES.find(s => s.id === value.service)
 
     if (!service) {
       return (
@@ -52,15 +52,15 @@ export default class VideoEmbedPreview extends React.Component {
             {humanizeList(SUPPORTED_SERVICES.map(s => s.title))}
           </div>
         </div>
-      );
+      )
     }
 
-    const Icon = service.icon || FaFilm;
+    const Icon = service.icon || FaFilm
     return (
       <div className={styles.root}>
-        <iframe src={service.url(value.id)} frameBorder="0" allowFullScreen />
+        <iframe src={service.url(value.id)} frameBorder='0' allowFullScreen />
         <Icon size={30} />
       </div>
-    );
+    )
   }
 }

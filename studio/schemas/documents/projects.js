@@ -1,5 +1,3 @@
-import {format} from 'date-fns'
-
 export default {
   name: 'projects',
   type: 'document',
@@ -12,19 +10,16 @@ export default {
       name: 'title',
       type: 'localeString',
       title: 'Title'
-      // description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
       name: 'subTitle',
       type: 'localeText',
       title: 'Sub Title'
-      // description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
       name: 'slug',
       type: 'slug',
-      title: 'スラッグ(URL)',
-      description: '半角英数96文字以内',
+      title: 'Slug(URL)',
       validation: Rule => Rule.required(),
       options: {
         source: 'title.en',
@@ -36,7 +31,7 @@ export default {
       type: 'datetime',
       title: '公開日',
       validation: Rule => Rule.required(),
-      description: '公開日(未来の日付で予約投稿)',
+      description: 'This can be used to schedule post for publishing',
       options: {
         timeFormat: 'HH:mm:ss'
       }
@@ -44,8 +39,7 @@ export default {
     {
       name: 'mainImage',
       type: 'mainImage',
-      title: 'メインイメージ',
-      description: '一覧ページサムネイル、SNS共有用'
+      title: 'Main Image'
     },
     {
       title: 'Platforms',
@@ -70,27 +64,13 @@ export default {
     {
       name: 'excerpt',
       type: 'localeExcerptPortableText',
-      title: '抜粋',
-      description:
-        'SNS共有やSEO用の文章'
+      title: 'Excerpt',
+      description: 'This ends up on summary pages, on Google, when people share your post in social media.'
     },
-    // {
-    //   name: 'categories',
-    //   type: 'array',
-    //   title: 'カテゴリー',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       to: {
-    //         type: 'category'
-    //       }
-    //     }
-    //   ]
-    // },
     {
       name: 'body',
       type: 'localeBodyPortableText',
-      title: '本文'
+      title: 'Body'
     }
   ],
   orderings: [

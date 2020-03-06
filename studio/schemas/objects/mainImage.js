@@ -17,12 +17,12 @@ export default {
   }),
   fields: [
     {
-      name: 'caption',
-      type: 'string',
-      title: 'キャプション',
+      name: 'alt',
+      type: 'localeString',
+      title: 'Alternative text',
+      description: 'Important for SEO and accessiblity.',
       options: {
         isHighlighted: true
-      }
       },
       validation: Rule =>
         Rule.custom(el => {
@@ -34,11 +34,9 @@ export default {
         })
     },
     {
-      name: 'alt',
-      type: 'string',
-      title: 'Altタグテキスト',
-      description: 'SEO・アクセシビリティ用',
-      // validation: Rule => Rule.error('You have to fill out the alternative text.').required(),
+      name: 'caption',
+      type: 'localeString',
+      title: 'Caption',
       options: {
         isHighlighted: true
       }

@@ -1,24 +1,39 @@
 import {format} from 'date-fns'
+import {ValidationLocaleRequired} from '../lib/helper'
 
 export default {
   name: 'blog',
   type: 'document',
   title: 'Blog',
   initialValue: {
-    publishedAt: (new Date()).toISOString()
+    publishedAt: (new Date()).toISOString(),
+    body: {
+      _type: 'object',
+      link: {
+        _type: 'object',
+        blank: true
+      }
+    }
   },
   fields: [
     {
       name: 'title',
       type: 'localeString',
-      title: 'タイトル'
-      // description: 'Titles should be catchy, descriptive, and not too long'
+      title: 'Title',
+      validation: Rule =>
+        Rule.custom((el, context) => {
+          console.log(context)
+          const result = ValidationLocaleRequired(el, 'Title')
+          if (result) {
+            return result
+          }
+          return true
+        })
     },
     {
       name: 'slug',
       type: 'slug',
-      title: 'スラッグ(URL)',
-      description: '半角英数96文字以内',
+      title: 'Slug(URL)',
       validation: Rule => Rule.required(),
       options: {
         source: 'title.en',
@@ -28,9 +43,9 @@ export default {
     {
       name: 'publishedAt',
       type: 'datetime',
-      title: '公開日',
+      title: 'Published At',
       validation: Rule => Rule.required(),
-      description: '公開日(未来の日付で予約投稿)',
+      description: 'This can be used to schedule post for publishing',
       options: {
         timeFormat: 'HH:mm:ss'
       }
@@ -38,33 +53,35 @@ export default {
     {
       name: 'mainImage',
       type: 'mainImage',
-      title: 'メインイメージ',
-      description: '一覧ページサムネイル、SNS共有用'
+      title: 'Main Image',
+      description: 'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
       name: 'excerpt',
       type: 'localeExcerptPortableText',
-      title: '抜粋',
-      description:
-        'SNS共有やSEO用の文章'
+      title: 'Excerpt',
+      description: 'This ends up on summary pages, on Google, when people share your post in social media.',
+      validation: Rule =>
+        Rule.custom(el => {
+          const result = ValidationLocaleRequired(el, 'Excerpt')
+          if (result) {
+            return result
+          }
+          return true
+        })
     },
-    // {
-    //   name: 'categories',
-    //   type: 'array',
-    //   title: 'カテゴリー',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       to: {
-    //         type: 'category'
-    //       }
-    //     }
-    //   ]
-    // },
     {
       name: 'body',
       type: 'localeBodyPortableText',
-      title: '本文'
+      title: 'Body',
+      validation: Rule =>
+        Rule.custom(el => {
+          const result = ValidationLocaleRequired(el, 'Body')
+          if (result) {
+            return result
+          }
+          return true
+        })
     }
   ],
   orderings: [

@@ -16,13 +16,14 @@ export default {
     {
       name: 'url',
       type: 'url',
-      title: 'YouTube video URL'
+      title: 'YouTube video URL',
+      validation: Rule => Rule.required()
     }
   ],
   preview: {
-  	select: {
-  		url: 'url'
-  	},
-  	component: Preview
+    select: {
+      url: 'url'
+    },
+    component: Preview
   }
 }

@@ -1,5 +1,6 @@
 const schedulePosts = require('./lib/schedulePosts')
 const addCurrentDatetime = require('./lib/addCurrentDatetime')
+const handle404Page = require('./lib/handle404Page')
 
 const createPagePages = require('./lib/createPage')
 const {createProjectsPages, createProjectsArchives} = require('./lib/createProjects')
@@ -13,7 +14,7 @@ exports.onPreBuild = async ({graphql, reporter}) => {
 }
 
 exports.onCreatePage = async ({page, actions, reporter}) => {
-  await addCurrentDatetime(page, actions, reporter)
+  await Promise.all([addCurrentDatetime(page, actions, reporter), handle404Page(page, actions, reporter)])
 }
 
 exports.createPages = async ({graphql, actions, reporter}) => {

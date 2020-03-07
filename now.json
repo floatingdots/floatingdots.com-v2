@@ -25,27 +25,33 @@
     "EMAIL_SENDER": "@fd-email-sender",
     "EMAIL_RECEIVER": "@fd-email-receiver"
   },
-  "trailingSlash": false,
-  "cleanUrls": true,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/web/api/$1.js"
+      "src": "/api/(.*)",
+      "dest": "/web/api/$1.js",
+      "methods": ["POST", "GET"]
     },
     {
-      "source": "/(.*)",
-      "destination": "/web/$1"
+      "src": "/studio(/?)",
+      "dest": "/about/",
+      "status": 301
     },
     {
-      "source": "/(.*)",
-      "destination": "/web/404.html"
-    }
-  ],
-  "redirects": [
+      "src": "/ja/studio(/?)",
+      "dest": "/ja/about/",
+      "status": 301
+    },
     {
-      "source": "/studio(/?)",
-      "destination": "/about",
-      "statusCode": 301
-    }
+      "src": "/(((?!\\?|#|\\.).)*((?!\\?|/|#|\\.).))",
+      "status": 301,
+      "headers": { "Location": "/$1/" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/web/$1/"
+    },
+    { "handle": "filesystem" },
+    { "src": "/ja/(.*)", "status": 404, "dest": "/web/ja/404/" },
+    { "src": "/(.*)", "status": 404, "dest": "/web/404/" }
   ]
 }

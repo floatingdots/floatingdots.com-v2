@@ -75,6 +75,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/404', '/*/404']
+      }
+    },
+    {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
@@ -86,7 +92,6 @@ module.exports = {
     'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-recaptcha'
   ]
 }

@@ -30,7 +30,7 @@ const ProjectsHeader = props => {
       {mainImage && mainImage.asset &&
         <StyledImg
           loading='eager'
-          fluid={mainImage.asset.fluid}
+          fluid={mainImage.asset.localFile.childImageSharp.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       }

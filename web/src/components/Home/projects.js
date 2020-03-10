@@ -43,10 +43,13 @@ const Title = styled.span`
   }
 `
 
-const StyledImg = styled(props => <ImgLQIP {...props} />)`
-  transition: transform 250ms ease-in-out;
+const ImageWrapper = styled.div`
   max-width: 80%;
   margin: 0 0 0 auto;
+`
+
+const StyledImg = styled(props => <ImgLQIP {...props} />)`
+  transition: transform 250ms ease-in-out;
 `
 
 function Projects (props) {
@@ -59,12 +62,14 @@ function Projects (props) {
           <Title>{title.locale}</Title>
           <Icon symbol='arrow' options='forward' />
         </Heading>
-        <StyledImg
-          className='hover'
-          id={mainImage.asset.id}
-          fluid={mainImage.asset.fluid}
-          alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-        />
+        <ImageWrapper>
+          <StyledImg
+            className='hover'
+            id={mainImage.asset.id}
+            fluid={mainImage.asset.localFile.childImageSharp.fluid}
+            alt={(mainImage.alt && mainImage.alt.locale) || ' '}
+          />
+        </ImageWrapper>
       </StyledLink>
     </Wrapper>
   )

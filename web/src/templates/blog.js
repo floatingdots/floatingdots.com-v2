@@ -43,14 +43,22 @@ export const query = graphql`
       publishedAt
       mainImage {
         asset {
-          fluid(maxWidth: 720) {
-            ...GatsbySanityImageFluid_withWebp
+          id
+          localFile {
+            childImageSharp {
+              fluid(
+                maxWidth: 740,
+                quality: 50
+              ) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
-        ...SanityImage
         alt{
           locale(language: $language)
         }
+        ...SanityImage
       }
       title{
         locale(language: $language)

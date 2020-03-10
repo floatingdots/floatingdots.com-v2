@@ -66,12 +66,20 @@ export const query = graphql`
           }
           mainImage{
             asset {
-              fluid(maxWidth: 720) {
-                ...GatsbySanityImageFluid_withWebp
+              id
+              localFile {
+                childImageSharp {
+                  fluid(
+                    maxWidth: 740,
+                    quality: 50
+                  ) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
             alt{
-              locale(language: $language)
+                locale(language: $language)
             }
           }
         }
@@ -93,8 +101,16 @@ export const query = graphql`
           }
           mainImage{
             asset {
-              fluid(maxWidth: 1024, maxHeight: 400) {
-                ...GatsbySanityImageFluid_withWebp
+              id
+              localFile {
+                childImageSharp {
+                  fluid(
+                    maxWidth: 740,
+                    quality: 50
+                  ) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
             alt{

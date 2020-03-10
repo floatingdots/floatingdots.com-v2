@@ -40,7 +40,7 @@ const BlogHeader = props => {
         <StyledImg
           loading='eager'
           id={mainImage.asset.id}
-          fluid={mainImage.asset.fluid}
+          fluid={mainImage.asset.localFile.childImageSharp.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       }

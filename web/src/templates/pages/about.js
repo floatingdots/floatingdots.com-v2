@@ -54,9 +54,21 @@ export const query = graphql`
         current
       }
       mainImage{
+        alt{
+          locale(language: $language)
+        }
         asset {
-          fluid(maxWidth: 720) {
-            ...GatsbySanityImageFluid_withWebp
+          id
+          localFile {
+            childImageSharp {
+              fluid(
+                maxWidth: 740
+                quality: 50,
+
+              ) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -68,9 +80,20 @@ export const query = graphql`
           locale(language: $language)
         }
         mainImage{
+          alt{
+            locale(language: $language)
+          }
           asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp
+            id
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 740,
+                  quality: 50
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
         }
@@ -83,9 +106,20 @@ export const query = graphql`
           locale(language: $language)
         }
         mainImage{
+          alt{
+            locale(language: $language)
+          }
           asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp
+            id
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 740,
+                  quality: 50
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
         }
@@ -98,9 +132,20 @@ export const query = graphql`
           locale(language: $language)
         }
         mainImage{
+          alt{
+            locale(language: $language)
+          }
           asset {
-            fluid(maxWidth: 720) {
-              ...GatsbySanityImageFluid_withWebp
+            id
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 740,
+                  quality: 50
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
         }

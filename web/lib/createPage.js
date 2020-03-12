@@ -5,7 +5,7 @@ const pages = [
   {slug: 'careers', locales: ['common']},
   {slug: '404', locales: ['common']}
 ]
-const buildI18nPages = require('./helpers')
+const {buildI18nPages} = require('./helpers')
 
 module.exports = async function createPagePages (graphql, actions, reporter) {
   reporter.info('--------------------Pages----------------------')

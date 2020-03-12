@@ -1,5 +1,6 @@
 const {format, isFuture, parseISO} = require('date-fns')
-const buildI18nPages = require('./helpers')
+
+const {allLanguages, buildI18nPages} = require('./helpers')
 
 exports.createBlogArchives = async function createBlogArchives (graphql, actions, reporter) {
   reporter.info('--------------------Blog Archives----------------------')

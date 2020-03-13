@@ -10,11 +10,22 @@ const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 const srcPath = resolveApp('src')
 
-module.exports = function getNewsUrl (publishedAt, slug) {
+exports.allLanguages = allLanguages
+
+exports.mapEdgesToNodes = function mapEdgesToNodes (data) {
+  if (!data.edges) return []
+  return data.edges.map(edge => edge.node)
+}
+
+exports.getNewsUrl = function getNewsUrl (publishedAt, slug) {
   return `https://floatingdots.com/news/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 
-module.exports = function toPlainText (blocks) {
+exports.filterOutDocsWithoutLocaleTitle = function filterOutDocsWithoutLocaleTitle ({title}, locale) {
+  return (title || {})[locale]
+}
+
+exports.toPlainText = function toPlainText (blocks) {
   if (!blocks) {
     return ''
   }
@@ -46,7 +57,7 @@ async function createI18nextInstance (language, namespaces) {
   return i18n
 }
 
-module.exports = async function buildI18nPages (
+exports.buildI18nPages = async function buildI18nPages (
   inputData,
   pageDefinitionCallback,
   namespaces,
@@ -66,13 +77,21 @@ module.exports = async function buildI18nPages (
         })
       )
 
-      const alternateLinks = definitions.map(d => ({
-        language: d.context.language,
-        path: d.path
-      }))
+      const alternateLinks = definitions.map(d => {
+        if (!d.skip) {
+          return {
+            language: d.context.language,
+            path: d.path
+          }
+        }
+      }).filter(d => d !== undefined)
 
       definitions.forEach(d => {
+        const {skip} = d
         d.context.alternateLinks = alternateLinks
+        if (skip) {
+          return
+        }
         reporter.info(`Creating: ${d.path}`)
         createPage(d)
       })

@@ -1,5 +1,5 @@
 const {isFuture, parseISO} = require('date-fns')
-const buildI18nPages = require('./helpers')
+const {buildI18nPages} = require('./helpers')
 
 exports.createCareersPages = async function (graphql, actions, reporter) {
   const currentDateTime = new Date().toISOString()

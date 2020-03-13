@@ -1,19 +1,12 @@
 import {format} from 'date-fns'
-import {ValidationLocaleRequired} from '../lib/helper'
+import {ValidationLocaleRequired, ValidationLocaleTitleRequired} from '../lib/helper'
 
 export default {
   name: 'blog',
   type: 'document',
   title: 'Blog',
   initialValue: {
-    publishedAt: (new Date()).toISOString(),
-    body: {
-      _type: 'object',
-      link: {
-        _type: 'object',
-        blank: true
-      }
-    }
+    publishedAt: (new Date()).toISOString()
   },
   fields: [
     {
@@ -22,8 +15,7 @@ export default {
       title: 'Title',
       validation: Rule =>
         Rule.custom((el, context) => {
-          console.log(context)
-          const result = ValidationLocaleRequired(el, 'Title')
+          const result = ValidationLocaleTitleRequired(el, context, 'Excerpt')
           if (result) {
             return result
           }
@@ -62,8 +54,8 @@ export default {
       title: 'Excerpt',
       description: 'This ends up on summary pages, on Google, when people share your post in social media.',
       validation: Rule =>
-        Rule.custom(el => {
-          const result = ValidationLocaleRequired(el, 'Excerpt')
+        Rule.custom((el, context) => {
+          const result = ValidationLocaleRequired(el, context, 'Excerpt')
           if (result) {
             return result
           }
@@ -75,8 +67,8 @@ export default {
       type: 'localeBodyPortableText',
       title: 'Body',
       validation: Rule =>
-        Rule.custom(el => {
-          const result = ValidationLocaleRequired(el, 'Body')
+        Rule.custom((el, context) => {
+          const result = ValidationLocaleRequired(el, context, 'Body')
           if (result) {
             return result
           }

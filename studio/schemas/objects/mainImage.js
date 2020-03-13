@@ -8,9 +8,7 @@ export default {
     hotspot: true
   },
   validation: Rule => Rule.custom(el => {
-    const {asset} = el
-    if (!asset || !asset._ref) {
-      console.log('antusntusnts')
+    if (!el || !el.asset || !el.asset._ref) {
       return 'Image is Required.'
     }
     return true
@@ -25,8 +23,8 @@ export default {
         isHighlighted: true
       },
       validation: Rule =>
-        Rule.custom(el => {
-          const result = ValidationLocaleRequired(el, 'Image Alt')
+        Rule.custom((el, context) => {
+          const result = ValidationLocaleRequired(el, context, 'Image Alt')
           if (result) {
             return result
           }

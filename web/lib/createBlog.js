@@ -1,5 +1,6 @@
 const {format, isFuture, parseISO} = require('date-fns')
-const buildI18nPages = require('./helpers')
+
+const {allLanguages, buildI18nPages} = require('./helpers')
 
 exports.createBlogArchives = async function createBlogArchives (graphql, actions, reporter) {
   reporter.info('--------------------Blog Archives----------------------')
@@ -14,6 +15,10 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
     ){
       edges{
         node {
+          title{
+            en
+            ja
+          }
           slug {
             current
           }
@@ -26,21 +31,30 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
     if (result.errors) {
       throw result.errors
     }
+    let allLangsblogPosts = {}
     const postsPerPage = 8
-    const blogLength = result.data.blog.edges.length
-    const numPages = Math.ceil(blogLength / postsPerPage)
+    const postEdges = (result.data.blog || {}).edges || []
 
-    reporter.info(`Total Blog Posts: ${blogLength}, Toal archive pages: ${numPages}`)
+    allLanguages.map(lang => {
+      allLangsblogPosts[lang] = {}
+      const postLength = postEdges.filter(edge => edge.node.title[lang]).length
+      const numPages = Math.ceil(postLength / postsPerPage)
+
+      allLangsblogPosts[lang].postLength = postLength
+      allLangsblogPosts[lang].numPages = numPages
+
+      reporter.info(`Total Blog Posts ${lang}: ${postLength}, Toal archive pages ${lang}: ${numPages}`)
+    })
 
     const archiveTopPages = buildI18nPages(
       null,
       (_, lang) => ({
         path: lang === 'en' ? '/blog/' : `/${lang}/blog/`,
-        component: require.resolve(`../src/templates/blog-archive.js`),
+        component: require.resolve(`../src/templates/blog-archive.${lang}.js`),
         context: {
           limit: postsPerPage,
           skip: 0,
-          numPages,
+          numPages: allLangsblogPosts[lang].numPages,
           currentPage: 1,
           currentDatetime: currentDateTime
         }
@@ -48,20 +62,18 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
       ['common', ...locales], // Must incled common to show language switcher
       createPage,
       reporter
-    ).then(() => {
-      return 'test'
-    })
-
-    const archivePages = Promise.all(Array.from({length: numPages}).map(async (_, i) => {
+    )
+    const archivePages = Promise.all(Array.from({length: 10}).map(async (_, i) => {
       await buildI18nPages(
         null,
         (_, lang) => ({
+          skip: i + 1 > allLangsblogPosts[lang].numPages,
           path: i === 0 ? lang === 'en' ? '/blog/archive' : `/${lang}/blog/archive` : lang === 'en' ? `/blog/archive/${i + 1}/` : `/${lang}/blog/archive/${i + 1}/`,
-          component: require.resolve(`../src/templates/blog-archive.js`),
+          component: require.resolve(`../src/templates/blog-archive.${lang}.js`),
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,
-            numPages,
+            numPages: allLangsblogPosts[lang].numPages,
             currentPage: i + 1,
             currentDatetime: currentDateTime
           }
@@ -79,6 +91,7 @@ exports.createBlogPages = async function createBlogPages (graphql, actions, repo
   reporter.info('--------------------Blog Pages----------------------')
   const currentDateTime = new Date().toISOString()
   const {createPage} = actions
+  const locales = []
 
   await graphql(`
   query blogPages ($currentDateTime: Date!) {
@@ -89,6 +102,10 @@ exports.createBlogPages = async function createBlogPages (graphql, actions, repo
         node {
           id
           publishedAt
+          title{
+            en
+            ja
+          }
           slug {
             current
           }
@@ -100,17 +117,18 @@ exports.createBlogPages = async function createBlogPages (graphql, actions, repo
     if (result.errors) {
       throw result.errors
     }
+
     const postEdges = (result.data.blog || {}).edges || []
     const filteredEdges = postEdges.filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
-    const locales = []
 
     const i18nPages = Promise.all(filteredEdges.map(async p => {
-      const {id, slug = {}, publishedAt} = p.node
+      const {id, slug = {}, publishedAt, title} = p.node
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM')
 
       await buildI18nPages(
         null,
         (_, lang) => ({
+          skip: !title[lang],
           path: lang === 'en' ? `/blog/${dateSegment}/${slug.current}` : `/${lang}/blog/${dateSegment}/${slug.current}`,
           component: require.resolve('../src/templates/blog.js'),
           context: {

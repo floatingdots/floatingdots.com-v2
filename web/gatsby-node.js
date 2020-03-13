@@ -10,7 +10,7 @@ const {createCareersPages} = require('./lib/createCareers')
 const createLocaleResolvers = require('./lib/createLocaleResolvers')
 
 exports.onPreBuild = async ({graphql, reporter}) => {
-  // await schedulePosts(graphql, reporter)
+  await schedulePosts(graphql, reporter)
 }
 
 exports.onCreatePage = async ({page, actions, reporter}) => {

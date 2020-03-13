@@ -7,7 +7,7 @@ const {formatToTimeZone} = require('date-fns-timezone')
 module.exports = async function schedulePosts (graphql, reporter) {
   const result = await graphql(`
     {
-      news: allSanityBlogs(
+      blog: allSanityBlog(
         filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
       ) {
         edges {
@@ -17,6 +17,25 @@ module.exports = async function schedulePosts (graphql, reporter) {
             publishedAt
             title{
               en
+              ja
+            }
+            slug {
+              current
+            }
+          }
+        }
+      }
+      projects: allSanityProjects(
+        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      ) {
+        edges {
+          node {
+            _type
+            id
+            publishedAt
+            title{
+              en
+              ja
             }
             slug {
               current
@@ -27,19 +46,22 @@ module.exports = async function schedulePosts (graphql, reporter) {
     }
   `)
   if (result.errors) throw result.errors
-  const news = (result.data.news || {}).edges || []
-  const postEdges = [...news]
+  const blogs = (result.data.blogs || {}).edges || []
+  const projects = (result.data.projects || {}).edges || []
+  const postEdges = [...blogs, ...projects]
+
   postEdges
     .filter(edge => isFuture(parseISO(edge.node.publishedAt)))
-    .forEach((edge, index) => {
+    .forEach(edge => {
       const {_type, id, slug = {}, publishedAt, title} = edge.node
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM')
       const pbNY = formatToTimeZone(publishedAt, 'YYYY/MM/DD HH:mm:ss [GMT]Z (z)', {timeZone: 'America/New_York'})
-      const pbTokyo = formatToTimeZone(publishedAt, 'YYYY/MM/DD HH:mm:ss [GMT]Z (z)', {timeZone: 'Asia/Tokyo'})
 
       let path
-      if (_type === 'news') {
-        path = `/news/${dateSegment}/${slug.current}/`
+      if (_type === 'blog') {
+        path = `/blog/${dateSegment}/${slug.current}/`
+      } else if (_type === 'projects') {
+        path = `/projects/${slug.current}/`
       }
 
       base('Production').create([
@@ -47,10 +69,9 @@ module.exports = async function schedulePosts (graphql, reporter) {
           'fields': {
             'type': _type,
             'id': id,
-            'title': title.en,
+            'title': title.en || title.ja,
             'publishedAt': publishedAt,
             'publishedAt New York': pbNY,
-            'publishedAt Tokyo': pbTokyo,
             'slug': path
           }
         }
@@ -78,7 +99,7 @@ module.exports = async function schedulePosts (graphql, reporter) {
                 })
               }
             })
-            reporter.info(`Scheduled Post ${pbNY}: ${title.en}`)
+            reporter.info(`Scheduled Post ${pbNY}: ${title.en || title.ja}`)
           }
           )
         })

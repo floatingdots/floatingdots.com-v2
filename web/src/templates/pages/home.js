@@ -40,7 +40,7 @@ export const query = graphql`
     }
   }
 
-  query HomePgeQuery( $language: String!, $currentDatetime: Date!) {
+  query HomePageQuery( $language: String!, $currentDatetime: Date!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       homeIntro{
@@ -88,7 +88,7 @@ export const query = graphql`
     blog: allSanityBlog(
       limit: 3
       sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
+      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime }, settings:{ languages: { in: [$language] } } }
     ) {
       edges {
         node {

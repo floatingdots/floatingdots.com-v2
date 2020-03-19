@@ -23,6 +23,7 @@ import localeBodyPortableText from './objects/locale/bodyPortableText'
 import localeExcerptPortableText from './objects/locale/excerptPortableText'
 import aboutBody from './objects/aboutBody'
 import careersBody from './objects/careersBody'
+import settings from './objects/settings'
 
 export default createSchema({
   name: 'studio',
@@ -47,6 +48,7 @@ export default createSchema({
     localeBodyPortableText,
     localeExcerptPortableText,
     aboutBody,
-    careersBody
+    careersBody,
+    settings
   ])
 })

@@ -6,9 +6,18 @@ export default {
   type: 'document',
   title: 'Blog',
   initialValue: {
-    publishedAt: (new Date()).toISOString()
+    publishedAt: (new Date()).toISOString(),
+    settings: {
+      _type: 'object',
+      languages: ['en']
+    }
   },
   fields: [
+    {
+      name: 'settings',
+      type: 'settings',
+      title: 'Settings'
+    },
     {
       name: 'title',
       type: 'localeString',

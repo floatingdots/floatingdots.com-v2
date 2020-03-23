@@ -25,7 +25,7 @@ export const query = graphql`
       limit: $limit
       skip: $skip
       sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
+      filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime }, settings:{ languages: { in: [$language] } } }
     ){
       edges {
         node {

@@ -15,9 +15,8 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
     ){
       edges{
         node {
-          title{
-            en
-            ja
+          settings{
+            languages
           }
           slug {
             current
@@ -37,7 +36,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
 
     allLanguages.map(lang => {
       allLangsblogPosts[lang] = {}
-      const postLength = postEdges.filter(edge => edge.node.title[lang]).length
+      const postLength = postEdges.filter(edge => edge.node.settings.languages[lang])
       const numPages = Math.ceil(postLength / postsPerPage)
 
       allLangsblogPosts[lang].postLength = postLength
@@ -50,7 +49,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
       null,
       (_, lang) => ({
         path: lang === 'en' ? '/blog/' : `/${lang}/blog/`,
-        component: require.resolve(`../src/templates/blog-archive.${lang}.js`),
+        component: require.resolve(`../src/templates/blog-archive.js`),
         context: {
           limit: postsPerPage,
           skip: 0,
@@ -63,13 +62,19 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
       createPage,
       reporter
     )
-    const archivePages = Promise.all(Array.from({length: 10}).map(async (_, i) => {
+
+    const maxNumPagesLang = allLanguages.reduce(() => {
+      return allLanguages.sort((a, b) => allLangsblogPosts[b].numPages - allLangsblogPosts[a].numPages)[0]
+    })
+    const maxNumPages = allLangsblogPosts[maxNumPagesLang].numPages
+
+    const archivePages = Promise.all(Array.from({length: maxNumPages}).map(async (_, i) => {
       await buildI18nPages(
         null,
         (_, lang) => ({
           skip: i + 1 > allLangsblogPosts[lang].numPages,
           path: i === 0 ? lang === 'en' ? '/blog/archive' : `/${lang}/blog/archive` : lang === 'en' ? `/blog/archive/${i + 1}/` : `/${lang}/blog/archive/${i + 1}/`,
-          component: require.resolve(`../src/templates/blog-archive.${lang}.js`),
+          component: require.resolve(`../src/templates/blog-archive.js`),
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,

@@ -89,16 +89,6 @@ module.exports = {
         overlayDrafts: !isProd
       }
     },
-    {
-      resolve: `gatsby-plugin-remote-images`,
-      options: {
-        nodeType: 'SanityImageAsset',
-        imagePath: 'url',
-        name: 'localFile'
-      }
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',

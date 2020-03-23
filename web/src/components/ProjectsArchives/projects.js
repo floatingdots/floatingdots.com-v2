@@ -62,7 +62,7 @@ function Projects (props) {
         </Heading>
         <StyledImg
           className='image'
-          fluid={mainImage.asset.localFile.childImageSharp.fluid}
+          fluid={mainImage.asset.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
         />
       </StyledLink>

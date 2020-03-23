@@ -67,15 +67,8 @@ export const query = graphql`
           mainImage{
             asset {
               id
-              localFile {
-                childImageSharp {
-                  fluid(
-                    maxWidth: 740,
-                    quality: 50
-                  ) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
+              fluid(maxWidth: 740) {
+                ...GatsbySanityImageFluid
               }
             }
             alt{
@@ -102,15 +95,8 @@ export const query = graphql`
           mainImage{
             asset {
               id
-              localFile {
-                childImageSharp {
-                  fluid(
-                    maxWidth: 740,
-                    quality: 50
-                  ) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
+              fluid(maxWidth: 1024, maxHeight: 400) {
+                ...GatsbySanityImageFluid
               }
             }
             alt{

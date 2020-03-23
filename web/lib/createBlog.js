@@ -42,7 +42,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
       allLangsblogPosts[lang].postLength = postLength
       allLangsblogPosts[lang].numPages = numPages
 
-      reporter.info(`Total Blog Posts ${lang}: ${postLength}, Toal archive pages ${lang}: ${numPages + 1}`)
+      reporter.info(`Total Blog Posts ${lang}: ${postLength + 1}, Toal archive pages ${lang}: ${numPages + 1}`)
     })
 
     const archiveTopPages = buildI18nPages(

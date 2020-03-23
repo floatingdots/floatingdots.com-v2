@@ -36,13 +36,13 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
 
     allLanguages.map(lang => {
       allLangsblogPosts[lang] = {}
-      const postLength = postEdges.filter(edge => edge.node.settings.languages[lang])
+      const postLength = postEdges.filter(edge => edge.node.settings.languages[lang]).length
       const numPages = Math.ceil(postLength / postsPerPage)
 
       allLangsblogPosts[lang].postLength = postLength
       allLangsblogPosts[lang].numPages = numPages
 
-      reporter.info(`Total Blog Posts ${lang}: ${postLength}, Toal archive pages ${lang}: ${numPages}`)
+      reporter.info(`Total Blog Posts ${lang}: ${postLength}, Toal archive pages ${lang}: ${numPages + 1}`)
     })
 
     const archiveTopPages = buildI18nPages(

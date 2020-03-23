@@ -59,18 +59,11 @@ export const query = graphql`
         }
         asset {
           id
-          localFile {
-            childImageSharp {
-              fluid(
-                maxWidth: 1024,
-                quality: 50
-              ) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
+          fluid( maxWidth: 1024 ) {
+            ...GatsbySanityImageFluid
           }
         }
-      }
+    }
       intro{
         locale(language: $language)
       }

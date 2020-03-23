@@ -47,7 +47,7 @@ function Preview (props) {
         <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
           <StyledImg
             id={mainImage.asset.id}
-            fluid={mainImage.asset.localFile.childImageSharp.fluid}
+            fluid={mainImage.asset.fluid}
             alt={(mainImage.alt && mainImage.alt.locale) || ' '}
           />
         </StyledLink>

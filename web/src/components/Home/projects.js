@@ -66,7 +66,7 @@ function Projects (props) {
           <StyledImg
             className='hover'
             id={mainImage.asset.id}
-            fluid={mainImage.asset.localFile.childImageSharp.fluid}
+            fluid={mainImage.asset.fluid}
             alt={(mainImage.alt && mainImage.alt.locale) || ' '}
           />
         </ImageWrapper>

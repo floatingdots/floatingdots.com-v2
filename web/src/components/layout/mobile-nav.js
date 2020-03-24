@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'gatsby'
 import {useTranslation} from 'react-i18next'
 import styled from 'styled-components'
+import {getLocaleUrl} from '../../lib/helpers'
 
 import {colors} from '../../lib/variables'
 import LanguageSwitcher from '../shared/langSwitcher'
@@ -63,11 +64,11 @@ const MobileNav = ({onHideNav, onShowNav, showNav}) => {
     <Wrapper id='nav'className={(showNav && 'active')}>
       <Inner>
         <List>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') && onHideNav} to={i18n.language === 'en' ? '/projects/' : `/${i18n.language}/projects/`}>Projects</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') && onHideNav} to={i18n.language === 'en' ? '/blog/' : `/${i18n.language}/blog/`}>Blog</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') && onHideNav} to={i18n.language === 'en' ? '/about/' : `/${i18n.language}/about/`}>About</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') && onHideNav} to={i18n.language === 'en' ? '/contact/' : `/${i18n.language}/contact/`}>Contact</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') && onHideNav} to={i18n.language === 'en' ? '/careers/' : `/${i18n.language}/careers/`}>Careers</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') ? onHideNav : undefined} to={getLocaleUrl('projects', i18n.language)}>Projects</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') ? onHideNav : undefined} to={getLocaleUrl('blog', i18n.language)}>Blog</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') ? onHideNav : undefined} to={getLocaleUrl('about', i18n.language)}>About</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') ? onHideNav : undefined} to={getLocaleUrl('contact', i18n.language)}>Contact</StyledLink></Item>
+          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') ? onHideNav : undefined} to={getLocaleUrl('careers', i18n.language)}>Careers</StyledLink></Item>
         </List>
         <LanguageSwitcher onHideNav={onHideNav} />
       </Inner>

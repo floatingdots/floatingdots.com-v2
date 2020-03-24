@@ -143,7 +143,7 @@ const Wrap = styled.div`
   }
 `
 
-function Layout ({props, children, onHideNav, onShowNav, showNav, isHome}) {
+function Layout ({props, children, onHideNav, onShowNav, showNav, onHideLangSwitchBanner, isHome}) {
   return (
     <Wrap className={(showNav && 'navActive')}>
       <GlobalStyle />
@@ -151,6 +151,7 @@ function Layout ({props, children, onHideNav, onShowNav, showNav, isHome}) {
         onHideNav={onHideNav}
         onShowNav={onShowNav}
         showNav={showNav}
+        onHideLangSwitchBanner={onHideLangSwitchBanner}
       />
       <MobileNav
         onHideNav={onHideNav}

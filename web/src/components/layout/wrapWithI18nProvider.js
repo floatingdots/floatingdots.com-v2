@@ -15,8 +15,9 @@ export function wrapWithI18nProvider ({element, props}) {
       resources: props.pageContext.i18nResources
     })
     .use(ReactI18next.initReactI18next)
-  // noinspection JSIgnoredPromiseFromCall
+
   i18n.init()
+
   return (
     <ReactI18next.I18nextProvider i18n={i18n}>
       <AlternateLinksContext.Provider

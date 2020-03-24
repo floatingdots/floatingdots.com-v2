@@ -22,8 +22,12 @@ export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
   return !isFuture(parseISO(publishedAt))
 }
 
+export function getLocaleUrl (slug, locale) {
+  return locale === 'en' ? `/${slug}` : `/${locale}/${slug}`
+}
+
 export function getBlogUrl (publishedAt, slug, locale) {
-  return locale === 'en' ? `/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/` : `${locale}/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
+  return locale === 'en' ? `/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/` : `/${locale}/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 
 export function getProjectsUrl (slug, locale) {

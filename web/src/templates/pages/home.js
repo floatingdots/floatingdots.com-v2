@@ -57,6 +57,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           title{
             locale(language: $language)
           }
@@ -85,6 +86,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           title{
             locale(language: $language)
           }

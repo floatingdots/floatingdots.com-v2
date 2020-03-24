@@ -29,8 +29,8 @@ export const query = graphql`
     ){
       edges {
         node {
+          id
           _type
-          _id
           publishedAt
           title{
             locale(language: $language)

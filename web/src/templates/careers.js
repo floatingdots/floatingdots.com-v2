@@ -39,6 +39,7 @@ export const query = graphql`
     }
 
     post: sanityCareers(id: {eq: $id}) {
+      id
       publishedAt
       slug {
         current

@@ -102,14 +102,13 @@ export const query = graphql`
     }
 
     positions: allSanityCareers(
-      limit: 99
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
     ){
       edges {
         node {
+          id
           _type
-          _id
           publishedAt
           title{
             locale(language: $language)

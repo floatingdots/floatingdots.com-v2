@@ -8,7 +8,7 @@ import {colors} from '../../lib/variables'
 
 const Wrapper = styled.div`
   display: block;
-  text-align: right;
+  text-align: ${props => props.footer ? 'left' : 'right'};
 `
 
 const Title = styled.span`
@@ -16,13 +16,13 @@ const Title = styled.span`
   display: block;
   font-weight: 700;
   margin: 0 0 1.6rem 0;
-  color: ${colors.lightBlack};
+  color: ${props => props.footer ? 'white' : colors.lightBlack};
 `
 
 const StyledLink = styled(props => <Link {...props} />)`
   display: block;
   font-size: 1.8rem;
-  color: ${colors.lightBlack};
+  color: ${props => props.footer ? 'white' : colors.lightBlack};
   text-decoration: none;
   margin: 0 0 2.4rem 0;
   &.active{
@@ -30,23 +30,30 @@ const StyledLink = styled(props => <Link {...props} />)`
   }
 `
 
-const LangSwitcher = ({onHideNav}) => {
+const LangSwitcher = props => {
+  const {onHideNav, footer} = props
+
   const alternateLinks = useContext(AlternateLinksContext)
   const {t, i18n} = useTranslation(['common'])
   const _w = typeof window !== 'undefined' && window
 
   return (
-    <Wrapper>
-      <Title>Seect Language</Title>
+    <Wrapper footer={footer}>
+      <Title footer={footer}>Select Language</Title>
       {alternateLinks &&
       alternateLinks
         .map((link, i) => [
           <StyledLink
+            footer={footer ? 1 : 0} // https://github.com/styled-components/styled-components/issues/1198
             key={link}
             to={link.path}
             hrefLang={link.language}
             className={link.language === i18n.language && 'active'}
-            onClick={() => { _w.localStorage.setItem('lang', link.language); _w && _w.location.pathname.split('/').includes(link.language) && onHideNav() }}
+            onClick={() => {
+              _w && _w.localStorage.setItem('userSelectedLang', link.language)
+              _w && _w.localStorage.setItem('langIsSelected', 'true')
+              _w && link.language === _w.localStorage.getItem('userSelectedLang') && onHideNav()
+            }}
           >
             {t(link.language)}
           </StyledLink>

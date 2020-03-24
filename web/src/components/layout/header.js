@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import Icon from '../shared/Icon/'
 import {useTranslation} from 'react-i18next'
 
+import LangSwitchBanner from '../shared/langSwitchBanner'
+
 const Wrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 64px;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -19,6 +20,7 @@ const Wrapper = styled.header`
 `
 
 const Inner = styled.div`
+  height: 48px;
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
@@ -28,7 +30,7 @@ const Inner = styled.div`
   justify-content: space-between;
   transition: all 0.2s;
   @media (min-width: 768px) {
-    padding: 0 32px;
+    padding: 8px 32px;
   }
 `
 
@@ -43,15 +45,17 @@ const StyledLink = styled(props => <Link {...props} />)`
   align-items: center;
 `
 
-const Header = ({onHideNav, onShowNav, showNav, path}) => {
+const Header = ({onHideNav, onShowNav, showNav, onHideLangSwitchBanner}) => {
   const {i18n} = useTranslation()
+
   return (
     <Wrapper>
+      <LangSwitchBanner onHideLangSwitchBanner={onHideLangSwitchBanner} />
       <Inner>
         <StyledLink to={i18n.language === 'en' ? `/` : `/${i18n.language}`} title='Floating Dots'>
           <Logo src='/logo/logo_header.min.svg' alt='Floating Dots' />
         </StyledLink>
-        <Icon role='button' aria-haspopup='true' aria-controls='nav' aria-label='Open navigation'symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} />
+        <Icon role='button' aria-haspopup='true' aria-controls='nav' aria-label='Open navigation' symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} />
       </Inner>
     </Wrapper>
   )

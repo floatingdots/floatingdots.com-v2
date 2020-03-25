@@ -17,7 +17,7 @@ const Wrapper = styled.article`
   }`
 
 const Projects = props => {
-  const {body, title, subTitle, mainImage, platforms, deliverables, techs, url} = props
+  const {_rawBody, title, subTitle, mainImage, platforms, deliverables, techs, url} = props
   const {t} = useTranslation('common')
 
   return (
@@ -28,7 +28,7 @@ const Projects = props => {
       <Divider />
       <Info platforms={platforms} deliverables={deliverables} techs={techs} url={url} />
       <Divider />
-      <Body body={body} />
+      <Body body={_rawBody} />
       <Divider />
       <Contact />
     </Wrapper>

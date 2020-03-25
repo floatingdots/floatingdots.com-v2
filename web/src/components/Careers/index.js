@@ -22,7 +22,7 @@ const Careers = props => {
     <Wrapper>
       <BackButton label={t('Back to Careers')} to='/careers' />
       <Header title={title} />
-      <Body body={body} />
+      <Body body={_rawBody} />
     </Wrapper>
   )
 }

@@ -62,6 +62,7 @@ export const query = graphql`
       excerpt{
         locale(language: $language)
       }
+      _rawBody(resolveReferences: {maxDepth: 5})
       body{
         locale(language: $language)
       }

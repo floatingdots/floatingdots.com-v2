@@ -17,7 +17,7 @@ const Wrapper = styled.article`
 `
 
 const Projects = props => {
-  const {body, title, mainImage, publishedAt} = props
+  const {title, mainImage, publishedAt, _rawBody} = props
   const {t} = useTranslation('common')
 
   return (
@@ -25,7 +25,7 @@ const Projects = props => {
       <BackButton label={t('Back to Blog List')} to='/blog' />
       <Header title={title} mainImage={mainImage} publishedAt={publishedAt} />
       <Divider />
-      <Body body={body} />
+      <Body body={_rawBody} />
       <Divider />
       <Contact />
     </Wrapper>

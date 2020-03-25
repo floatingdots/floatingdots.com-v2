@@ -10,11 +10,12 @@ const Wrapper = styled.div`
 
 const ProjectsHeader = props => {
   const {body} = props
+  const {i18n} = useTranslation()
+
   return (
     <Wrapper>
-      {body && body.locale &&
-        <PortableText blocks={body.locale} />
-      }
+      {body && body[i18n.language] &&
+        <PortableText blocks={body[i18n.language]} />}
     </Wrapper>
   )
 }

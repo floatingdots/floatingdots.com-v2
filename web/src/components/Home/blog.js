@@ -50,26 +50,25 @@ function Blog (props) {
   return (
     <>
       {title && slug && publishedAt && mainImage &&
-      <Wrapper>
-        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-          <StyledImg
-            id={mainImage.asset.id}
-            fluid={mainImage.asset.fluid}
-            alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-          />
-        </StyledLink>
-        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-          <Title>{title.locale}</Title>
-        </StyledLink>
-        <DateCats>
-          {publishedAt && (
-            <DateTime DateTime={publishedAt}>
-              {getPublishdAt(publishedAt, i18n.language)}
-            </DateTime>
-          )}
-        </DateCats>
-      </Wrapper>
-      }
+        <Wrapper>
+          <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+            <StyledImg
+              id={mainImage.asset.id}
+              fluid={mainImage.asset.fluid}
+              alt={(mainImage.alt && mainImage.alt.locale) || ' '}
+            />
+          </StyledLink>
+          <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+            <Title>{title.locale}</Title>
+          </StyledLink>
+          <DateCats>
+            {publishedAt && (
+              <DateTime DateTime={publishedAt}>
+                {getPublishdAt(publishedAt, i18n.language)}
+              </DateTime>
+            )}
+          </DateCats>
+        </Wrapper>}
     </>
   )
 }

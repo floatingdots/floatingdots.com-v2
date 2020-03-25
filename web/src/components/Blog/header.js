@@ -42,11 +42,9 @@ const BlogHeader = props => {
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-        />
-      }
+        />}
       {title && title.locale &&
-        <Title>{title.locale}</Title>
-      }
+        <Title>{title.locale}</Title>}
       {publishedAt && (
         <DateTime dateTime={publishedAt}>
           {getPublishdAt(publishedAt, i18n.language)}

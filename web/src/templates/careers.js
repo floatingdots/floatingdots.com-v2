@@ -3,7 +3,7 @@ import {graphql} from 'gatsby'
 import GraphQLErrorList from '../components/shared/graphql-error-list'
 
 import Layout from '../containers/layout'
-import SEO from '../components/layout/seo'
+import Seo from '../components/layout/seo'
 import Careers from '../components/Careers'
 import {toPlainText} from '../lib/helpers'
 
@@ -39,6 +39,7 @@ export const query = graphql`
     }
 
     post: sanityCareers(id: {eq: $id}) {
+      id
       publishedAt
       slug {
         current
@@ -73,7 +74,7 @@ const CareersTemplate = props => {
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
+      {post && <Seo title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
       {post && <Careers {...post} />}
 
     </Layout>

@@ -52,15 +52,13 @@ const Button = props => {
   return (
     <Wrapper>
       {to && !anotherSite &&
-      <StyledLink to={to} color={color}>
-        {label}
-      </StyledLink>
-      }
+        <StyledLink to={to} color={color}>
+          {label}
+        </StyledLink>}
       {to && anotherSite &&
-      <AnoterSite href={to} color={color} target='_blank'>
-        {label}
-      </AnoterSite>
-      }
+        <AnoterSite href={to} color={color} target='_blank'>
+          {label}
+        </AnoterSite>}
 
     </Wrapper>
   )

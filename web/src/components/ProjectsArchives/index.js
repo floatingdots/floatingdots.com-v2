@@ -51,7 +51,7 @@ function ProjectsArchives (props) {
       <List>
         {props.nodes &&
           props.nodes.map(node => (
-            <Item key={node.id} >
+            <Item key={node.id}>
               <Projects {...node} />
             </Item>
           ))}

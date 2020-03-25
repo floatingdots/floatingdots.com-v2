@@ -66,13 +66,13 @@ module.exports = async function schedulePosts (graphql, reporter) {
 
       base('Production').create([
         {
-          'fields': {
-            'type': _type,
-            'id': id,
-            'title': title.en || title.ja,
-            'publishedAt': publishedAt,
+          fields: {
+            type: _type,
+            id: id,
+            title: title.en || title.ja,
+            publishedAt: publishedAt,
             'publishedAt New York': pbNY,
-            'slug': path
+            slug: path
           }
         }
       ], (err, records) => {

@@ -3,7 +3,7 @@ import {graphql} from 'gatsby'
 import GraphQLErrorList from '../components/shared/graphql-error-list'
 
 import Layout from '../containers/layout'
-import SEO from '../components/layout/seo'
+import Seo from '../components/layout/seo'
 import Blog from '../components/Blog'
 import {toPlainText} from '../lib/helpers'
 
@@ -77,7 +77,7 @@ const BlogTemplate = props => {
       {errors && (
         <GraphQLErrorList errors={errors} />
       )}
-      {post && <SEO title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
+      {post && <Seo title={post.title.locale || 'Untitled'} description={(post.excerpt && post.excerpt.locale && toPlainText(post.excerpt.locale)) || ''} image={post.mainImage} />}
       {post && <Blog {...post} />}
     </Layout>
   )

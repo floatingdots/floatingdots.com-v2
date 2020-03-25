@@ -1,15 +1,9 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../../lib/helpers'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import SEO from '../../components/layout/seo'
+import Seo from '../../components/layout/seo'
 import Layout from '../../containers/layout'
-
 import Contact from '../../components/Contact'
 
 export const query = graphql`
@@ -85,7 +79,7 @@ const IndexPage = props => {
   const page = (data || {}).contact
   return (
     <Layout isHome>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description.locale}
       />

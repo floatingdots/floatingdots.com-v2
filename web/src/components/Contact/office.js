@@ -1,9 +1,7 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
 import {useTranslation} from 'react-i18next'
 
-import {getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
 
 const Wrapper = styled.header`
@@ -41,13 +39,13 @@ const GoogleMaps = styled.a`
 
 const Office = props => {
   const {address, googleMaps} = props
-  const {t, i18n} = useTranslation('common')
+  const {t} = useTranslation('common')
 
   return (
     <Wrapper>
       <Title>Office</Title>
       <Address>{address}</Address>
-      <GoogleMaps href={googleMaps} target='_blank'>{ t('OpenInGoogleMaps')}</GoogleMaps>
+      <GoogleMaps href={googleMaps} target='_blank'>{t('OpenInGoogleMaps')}</GoogleMaps>
     </Wrapper>
   )
 }

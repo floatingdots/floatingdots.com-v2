@@ -36,7 +36,7 @@ exports.createProjectsArchives = async function (graphql, actions, reporter) {
       null,
       (_, lang) => ({
         path: lang === 'en' ? '/projects/' : `/${lang}/projects/`,
-        component: require.resolve(`../src/templates/projects-archive.js`),
+        component: require.resolve('../src/templates/projects-archive.js'),
         context: {
           limit: postsPerPage,
           skip: 0,
@@ -57,7 +57,7 @@ exports.createProjectsArchives = async function (graphql, actions, reporter) {
         null,
         (_, lang) => ({
           path: i === 0 ? lang === 'en' ? '/projects/archive' : `/${lang}/projects/archive` : lang === 'en' ? `/projects/archive/${i + 1}/` : `/${lang}/projects/archive/${i + 1}/`,
-          component: require.resolve(`../src/templates/projects-archive.js`),
+          component: require.resolve('../src/templates/projects-archive.js'),
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,

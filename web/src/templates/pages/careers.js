@@ -7,7 +7,7 @@ import {
 } from '../../lib/helpers'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import SEO from '../../components/layout/seo'
+import Seo from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
 import CareersArchives from '../../components/CareersArchives'
@@ -102,14 +102,13 @@ export const query = graphql`
     }
 
     positions: allSanityCareers(
-      limit: 99
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { lte: $currentDatetime } }
     ){
       edges {
         node {
+          id
           _type
-          _id
           publishedAt
           title{
             locale(language: $language)
@@ -142,7 +141,7 @@ const IndexPage = props => {
     : []
   return (
     <Layout isHome>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description.locale}
       />

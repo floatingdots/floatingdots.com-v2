@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   base('Production').select({
     view: 'Main',
     maxRecords: 99999,
-    filterByFormula: `{published} != "1"`
+    filterByFormula: '{published} != "1"'
   }).eachPage((records, fetchNextPage) => {
     allRecords = [...allRecords, ...records]
     fetchNextPage()

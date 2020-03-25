@@ -1,13 +1,8 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../../lib/helpers'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import SEO from '../../components/layout/seo'
+import Seo from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
 import About from '../../components/About'
@@ -141,7 +136,7 @@ const AboutPage = props => {
   const page = (data || {}).about
   return (
     <Layout isHome>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description.locale}
       />

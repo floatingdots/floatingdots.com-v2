@@ -18,21 +18,21 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        start_url: `/`,
-        lang: `en`,
+        start_url: '/',
+        lang: 'en',
         name: title,
         short_name: title,
         description: desc,
-        background_color: `#fafafa`,
-        theme_color: `#fafafa`,
-        display: `standalone`,
-        icon: `src/images/icon.png`,
+        background_color: '#fafafa',
+        theme_color: '#fafafa',
+        display: 'standalone',
+        icon: 'src/images/icon.png',
         localize: [
           {
-            start_url: `/ja/`,
-            lang: `ja`,
+            start_url: '/ja/',
+            lang: 'ja',
             name: title,
             short_name: title,
             description: descJa

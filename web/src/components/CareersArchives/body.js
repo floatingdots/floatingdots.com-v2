@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
-import {colors} from '../../lib/variables'
 import PortableText from '../../components/shared/portableText'
 
 const Wrapper = styled.div`
@@ -43,12 +41,12 @@ const CareersBody = props => {
       {
         bodies.map((body, i) => {
           return body.title && body.body &&
-          <Group key={i}>
-            <Title>{body.title.locale}</Title>
-            <Text>
-              <PortableText blocks={body.body.locale} />
-            </Text>
-          </Group>
+            <Group key={i}>
+              <Title>{body.title.locale}</Title>
+              <Text>
+                <PortableText blocks={body.body.locale} />
+              </Text>
+            </Group>
         })
       }
     </Wrapper>

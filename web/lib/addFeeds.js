@@ -47,7 +47,7 @@ module.exports = {
       feed_url: 'https://floatongdots.com/rss.xml',
       image_url: 'https://floatongdots.com/icons/icon-512x512.png',
       custom_namespaces: {
-        'webfeeds': 'http://webfeeds.org/rss/1.0'
+        webfeeds: 'http://webfeeds.org/rss/1.0'
       },
       custom_elements: [
         {'webfeeds:icon': 'https://floatingdots.com/icons/icon-512x512.png'}

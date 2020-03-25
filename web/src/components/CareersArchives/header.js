@@ -1,9 +1,7 @@
 import React from 'react'
 import ImgLQIP from '../shared/imgLqip'
 import styled from 'styled-components'
-import {useTranslation} from 'react-i18next'
 
-import {getPublishdAt} from '../../lib/helpers'
 import {colors} from '../../lib/variables'
 
 const Wrapper = styled.header`
@@ -31,21 +29,18 @@ const StyledImg = styled(props => <ImgLQIP {...props} />)`
 
 const CareersHeader = props => {
   const {intro, mainImage} = props
-  const {i18n} = useTranslation()
 
   return (
     <Wrapper>
       {intro && intro.locale &&
-        <Title>{intro.locale}</Title>
-      }
+        <Title>{intro.locale}</Title>}
       {mainImage && mainImage.asset &&
         <StyledImg
           loading='eager'
           id={mainImage.asset.id}
           fluid={mainImage.asset.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-        />
-      }
+        />}
     </Wrapper>
   )
 }

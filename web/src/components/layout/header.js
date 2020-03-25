@@ -52,7 +52,7 @@ const Header = ({onHideNav, onShowNav, showNav, onHideLangSwitchBanner}) => {
     <Wrapper>
       <LangSwitchBanner onHideLangSwitchBanner={onHideLangSwitchBanner} />
       <Inner>
-        <StyledLink to={i18n.language === 'en' ? `/` : `/${i18n.language}`} title='Floating Dots'>
+        <StyledLink to={i18n.language === 'en' ? '/' : `/${i18n.language}`} title='Floating Dots'>
           <Logo src='/logo/logo_header.min.svg' alt='Floating Dots' />
         </StyledLink>
         <Icon role='button' aria-haspopup='true' aria-controls='nav' aria-label='Open navigation' symbol='navicon' onClick={showNav ? onHideNav : onShowNav} className={showNav && 'close'} />

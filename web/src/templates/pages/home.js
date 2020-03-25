@@ -7,7 +7,7 @@ import {
 } from '../../lib/helpers'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import SEO from '../../components/layout/seo'
+import Seo from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
 import Divider from '../../components/shared/divider'
@@ -57,6 +57,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           title{
             locale(language: $language)
           }
@@ -85,6 +86,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           title{
             locale(language: $language)
           }
@@ -133,7 +135,7 @@ const IndexPage = props => {
 
   return (
     <Layout isHome>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description.locale}
       />

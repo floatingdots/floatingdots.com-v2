@@ -27,7 +27,7 @@ const Small = styled.span`
 const WeLove = (props) => {
   return (
     <Wrapper>
-      <Title ><Small>We Love</Small><br />Design, Tech, and Business.</Title>
+      <Title><Small>We Love</Small><br />Design, Tech, and Business.</Title>
     </Wrapper>
   )
 }

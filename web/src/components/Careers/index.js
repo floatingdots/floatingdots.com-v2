@@ -14,8 +14,8 @@ const Wrapper = styled.article`
   }
  `
 
-const Projects = props => {
-  const {body, title} = props
+const Careers = props => {
+  const {_rawBody, title} = props
   const {t} = useTranslation('common')
 
   return (
@@ -26,4 +26,4 @@ const Projects = props => {
     </Wrapper>
   )
 }
-export default Projects
+export default Careers

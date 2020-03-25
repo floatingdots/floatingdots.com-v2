@@ -1,7 +1,7 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import GraphQLErrorList from '../components/shared/graphql-error-list'
-import SEO from '../components/layout/seo'
+import Seo from '../components/layout/seo'
 import Layout from '../containers/layout'
 import {
   mapEdgesToNodes,
@@ -69,8 +69,8 @@ const BlogArchivesTemplate = props => {
   return (
 
     <Layout>
-      {errors && <SEO title='GraphQL Error' />}
-      <SEO
+      {errors && <Seo title='GraphQL Error' />}
+      <Seo
         title={site.title}
         description={site.description.locale}
       />
@@ -84,8 +84,7 @@ const BlogArchivesTemplate = props => {
           nodes={blogNodes}
           currentPage={currentPage}
           numPages={numPages}
-        />
-      }
+        />}
 
     </Layout>
   )

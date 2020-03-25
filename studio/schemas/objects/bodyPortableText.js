@@ -34,7 +34,8 @@ export default {
               render: smallRender
             }
           },
-          {title: 'Emphasis', value: 'em'}],
+          {title: 'Emphasis', value: 'em'}
+        ],
         annotations: [
           {
             name: 'internalLink',
@@ -47,7 +48,6 @@ export default {
               {
                 name: 'reference',
                 type: 'reference',
-                title: 'Reference',
                 to: [
                   {type: 'blog'},
                   {type: 'projects'},

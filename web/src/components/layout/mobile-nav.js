@@ -61,7 +61,7 @@ const MobileNav = ({onHideNav, onShowNav, showNav}) => {
   const _w = typeof window !== 'undefined' && window
 
   return (
-    <Wrapper id='nav'className={(showNav && 'active')}>
+    <Wrapper id='nav' className={(showNav && 'active')}>
       <Inner>
         <List>
           <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') ? onHideNav : undefined} to={getLocaleUrl('projects', i18n.language)}>Projects</StyledLink></Item>

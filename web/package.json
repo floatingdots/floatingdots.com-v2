@@ -9,6 +9,7 @@
     "dev": "npm run clean-cache && gatsby develop -H 0.0.0.0",
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
     "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
     "now-build": "gatsby build",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

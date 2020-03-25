@@ -43,22 +43,21 @@ function Preview (props) {
   return (
     <>
       {title && publishedAt && slug && mainImage &&
-      <Wrapper>
-        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-          <StyledImg
-            id={mainImage.asset.id}
-            fluid={mainImage.asset.fluid}
-            alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-          />
-        </StyledLink>
-        <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
-          <Title>{title.locale}</Title>
-        </StyledLink>
-        <DateTime>
-          {getPublishdAt(publishedAt, i18n.language)}
-        </DateTime>
-      </Wrapper>
-      }
+        <Wrapper>
+          <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+            <StyledImg
+              id={mainImage.asset.id}
+              fluid={mainImage.asset.fluid}
+              alt={(mainImage.alt && mainImage.alt.locale) || ' '}
+            />
+          </StyledLink>
+          <StyledLink to={getBlogUrl(publishedAt, slug.current, i18n.language)}>
+            <Title>{title.locale}</Title>
+          </StyledLink>
+          <DateTime>
+            {getPublishdAt(publishedAt, i18n.language)}
+          </DateTime>
+        </Wrapper>}
     </>
   )
 }

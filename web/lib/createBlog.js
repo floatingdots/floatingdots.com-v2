@@ -30,7 +30,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
     if (result.errors) {
       throw result.errors
     }
-    let allLangsblogPosts = {}
+    const allLangsblogPosts = {}
     const postsPerPage = 8
     const postEdges = (result.data.blog || {}).edges || []
 
@@ -49,7 +49,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
       null,
       (_, lang) => ({
         path: lang === 'en' ? '/blog/' : `/${lang}/blog/`,
-        component: require.resolve(`../src/templates/blog-archive.js`),
+        component: require.resolve('../src/templates/blog-archive.js'),
         context: {
           limit: postsPerPage,
           skip: 0,
@@ -74,7 +74,7 @@ exports.createBlogArchives = async function createBlogArchives (graphql, actions
         (_, lang) => ({
           skip: i + 1 > allLangsblogPosts[lang].numPages,
           path: i === 0 ? lang === 'en' ? '/blog/archive' : `/${lang}/blog/archive` : lang === 'en' ? `/blog/archive/${i + 1}/` : `/${lang}/blog/archive/${i + 1}/`,
-          component: require.resolve(`../src/templates/blog-archive.js`),
+          component: require.resolve('../src/templates/blog-archive.js'),
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,

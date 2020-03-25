@@ -27,29 +27,25 @@ const ProjectsHeader = props => {
   return (
     <Wrapper>
       {platforms &&
-      <>
-        <Label>Platforms: </Label>
-        <Text>{platforms}</Text>
-      </>
-      }
+        <>
+          <Label>Platforms: </Label>
+          <Text>{platforms}</Text>
+        </>}
       {techs &&
-      <>
-        <Label>Techs: </Label>
-        <Text>{techs}</Text>
-      </>
-      }
+        <>
+          <Label>Techs: </Label>
+          <Text>{techs}</Text>
+        </>}
       {deliverables &&
-      <>
-        <Label>Deliverables: </Label>
-        <Text>{deliverables}</Text>
-      </>
-      }
+        <>
+          <Label>Deliverables: </Label>
+          <Text>{deliverables}</Text>
+        </>}
       {url &&
-      <>
-        <Label>URL: </Label>
-        <Link href={url} target='_blank'>{url}</Link>
-      </>
-      }
+        <>
+          <Label>URL: </Label>
+          <Link href={url} target='_blank'>{url}</Link>
+        </>}
 
     </Wrapper>
   )

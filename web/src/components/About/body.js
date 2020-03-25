@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import ImgLQIP from '../shared/imgLqip'
-import {colors} from '../../lib/variables'
 import PortableText from '../../components/shared/portableText'
 
 const Wrapper = styled.div`
@@ -56,17 +55,17 @@ const ProjectsHeader = props => {
       {
         bodies.map((body, i) => {
           return body.title && body.mainImage && body.body &&
-          <Group key={i}>
-            <Title>{body.title.locale}</Title>
-            <Text>
-              <PortableText blocks={body.body.locale} />
-            </Text>
-            <StyledImg
-              id={body.mainImage.asset.id}
-              fluid={body.mainImage.asset.fluid}
-              alt={(body.mainImage.alt && body.mainImage.alt.locale) || ' '}
-            />
-          </Group>
+            <Group key={i}>
+              <Title>{body.title.locale}</Title>
+              <Text>
+                <PortableText blocks={body.body.locale} />
+              </Text>
+              <StyledImg
+                id={body.mainImage.asset.id}
+                fluid={body.mainImage.asset.fluid}
+                alt={(body.mainImage.alt && body.mainImage.alt.locale) || ' '}
+              />
+            </Group>
         })
       }
     </Wrapper>

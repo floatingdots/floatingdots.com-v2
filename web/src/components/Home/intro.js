@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {colors, font, fontfamily} from '../../lib/variables'
+import {colors} from '../../lib/variables'
 
 import Rotation from '../Home/rotation'
 
@@ -12,7 +12,6 @@ const Heading = styled.span`
   @media (min-width: 768px) {
     margin: 12.8rem 0 0 0;
   }
-
 `
 const Top = styled.span`
   display: block;
@@ -44,7 +43,6 @@ const Your = styled.span`
 `
 
 const Title = styled.h1`
-  /* +font-mobile-base; */
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.2;
@@ -54,7 +52,6 @@ const Title = styled.h1`
     margin-top: 2.4rem;
     font-size: 2rem;
   }
-
 `
 
 const Intro = props => {

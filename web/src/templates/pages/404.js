@@ -2,10 +2,10 @@ import React from 'react'
 import {graphql} from 'gatsby'
 import GraphQLErrorList from '../../components/shared/graphql-error-list'
 
-import SEO from '../../components/layout/seo'
+import Seo from '../../components/layout/seo'
 import Layout from '../../containers/layout'
 
-import _404 from '../../components/_404'
+import Body from '../../components/_404'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -56,11 +56,11 @@ const _404Page = props => {
   const site = (data || {}).site
   return (
     <Layout isHome>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description.locale}
       />
-      <_404 />
+      <Body />
     </Layout>
   )
 }

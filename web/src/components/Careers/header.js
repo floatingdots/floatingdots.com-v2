@@ -20,8 +20,7 @@ const ProjectsHeader = props => {
   return (
     <Wrapper>
       {title && title.locale &&
-        <Title>{title.locale}</Title>
-      }
+        <Title>{title.locale}</Title>}
     </Wrapper>
   )
 }

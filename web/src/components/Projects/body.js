@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {colors} from '../../lib/variables'
 import PortableText from '../../components/shared/portableText'
+import {useTranslation} from 'react-i18next'
 
 const Wrapper = styled.div`
   max-width: 680px;

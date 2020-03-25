@@ -32,14 +32,11 @@ const ProjectsHeader = props => {
           loading='eager'
           fluid={mainImage.asset.fluid}
           alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-        />
-      }
+        />}
       {title && title.locale &&
-        <Title>{title.locale}</Title>
-      }
+        <Title>{title.locale}</Title>}
       {subTitle && subTitle.locale &&
-        <SubTitle>{subTitle.locale}</SubTitle>
-      }
+        <SubTitle>{subTitle.locale}</SubTitle>}
     </Wrapper>
   )
 }

@@ -23,9 +23,8 @@ export function wrapWithI18nProvider ({element, props}) {
       <AlternateLinksContext.Provider
         value={props.pageContext && props.pageContext.alternateLinks}
       >
-        {
-          <Helmet htmlAttributes={{lang: props.pageContext.language}}>
-            {props.pageContext &&
+        <Helmet htmlAttributes={{lang: props.pageContext.language}}>
+          {props.pageContext &&
               props.pageContext.alternateLinks &&
               props.pageContext.alternateLinks.map(link => (
                 <link
@@ -35,8 +34,7 @@ export function wrapWithI18nProvider ({element, props}) {
                   href={link.path}
                 />
               ))}
-          </Helmet>
-        }
+        </Helmet>
         {element}
       </AlternateLinksContext.Provider>
     </ReactI18next.I18nextProvider>

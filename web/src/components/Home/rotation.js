@@ -108,10 +108,10 @@ const Hero = props => {
 
   return (
     <Wrapper>
-      <Item ref={el => { delay0 = el }} >products📱</Item>
-      <Item ref={el => { delay1 = el }} >team 🐶🐹</Item>
-      <Item ref={el => { delay2 = el }} >services 🍜</Item>
-      <Item ref={el => { delay3 = el }} >company 🏢</Item>
+      <Item ref={el => { delay0 = el }}>products📱</Item>
+      <Item ref={el => { delay1 = el }}>team 🐶🐹</Item>
+      <Item ref={el => { delay2 = el }}>services 🍜</Item>
+      <Item ref={el => { delay3 = el }}>company 🏢</Item>
     </Wrapper>
   )
 }

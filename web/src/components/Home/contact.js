@@ -27,8 +27,8 @@ const Contact = (props) => {
   const {t, i18n} = useTranslation('common')
   return (
     <Wrapper>
-      <Title >{t('talk')}</Title>
-      <Button label={t('contact')} to={i18n.language === 'en' ? `/contact` : `/${i18n.language}/contact`} />
+      <Title>{t('talk')}</Title>
+      <Button label={t('contact')} to={i18n.language === 'en' ? '/contact' : `/${i18n.language}/contact`} />
     </Wrapper>
   )
 }

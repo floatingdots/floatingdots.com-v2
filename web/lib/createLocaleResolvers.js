@@ -2,7 +2,7 @@ module.exports = function createResolvers (createResolvers) {
   createResolvers({
     SanityLocaleString: {
       locale: {
-        type: `String!`,
+        type: 'String!',
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || ''
@@ -11,7 +11,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleText: {
       locale: {
-        type: `String!`,
+        type: 'String!',
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || ''
@@ -20,7 +20,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleShortText: {
       locale: {
-        type: `String!`,
+        type: 'String!',
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || ''
@@ -29,7 +29,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleExcerptPortableText: {
       locale: {
-        type: `JSON!`,
+        type: 'JSON!',
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || {}
@@ -38,7 +38,7 @@ module.exports = function createResolvers (createResolvers) {
     },
     SanityLocaleBodyPortableText: {
       locale: {
-        type: `JSON!`,
+        type: 'JSON!',
         args: {language: {type: 'String'}},
         resolve: (source, args) => {
           return source[args.language] || {}

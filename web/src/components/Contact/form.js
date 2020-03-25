@@ -37,7 +37,8 @@ const ContactForm = (props) => {
       }).catch(err => {
         console.log(err)
       })
-    }})
+    }
+  })
 
   const {values, setStatus, status, handleChange, handleBlur, handleSubmit, errors, touched} = formik
 
@@ -120,57 +121,57 @@ const ContactForm = (props) => {
 
         <FormGroup>
           {typeof window !== 'undefined' &&
-          <>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              size='invisible'
-              sitekey='6Ld6i28UAAAAAJ-B0VJRJ2leVhFl7HZtaS95EUHW'
-              onChange={(response) => {
-                setTimeout(() => {
-                  axios.request({
-                    method: 'POST',
-                    baseURL: '/api/message/contact',
-                    headers: {
-                      'Content-Type': 'application/json; charset=UTF-8'
-                    },
-                    data: JSON.stringify({
-                      name: values.name,
-                      email: values.email,
-                      message: values.message,
-                      locale: i18n.language,
-                      recaptcha: response
+            <>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                size='invisible'
+                sitekey='6Ld6i28UAAAAAJ-B0VJRJ2leVhFl7HZtaS95EUHW'
+                onChange={(response) => {
+                  setTimeout(() => {
+                    axios.request({
+                      method: 'POST',
+                      baseURL: '/api/message/contact',
+                      headers: {
+                        'Content-Type': 'application/json; charset=UTF-8'
+                      },
+                      data: JSON.stringify({
+                        name: values.name,
+                        email: values.email,
+                        message: values.message,
+                        locale: i18n.language,
+                        recaptcha: response
+                      })
+                    }).then((res) => {
+                      console.log(res)
+                      const {code} = res.data[2]
+                      if (!code) {
+                        notifySuccess()
+                        recaptchaRef.current.reset()
+                        setStatus({state: 'Success'})
+                        return
+                      }
+                      if (code === 406) {
+                        recaptchaRef.current.reset()
+                        notifyError()
+                        setStatus({state: 'Error', error: t('Invalid Email')})
+                      }
+                    }).catch(() => {
+                      recaptchaRef.current.reset()
+                      setStatus({state: 'Error', error: t('Failed')})
                     })
-                  }).then((res) => {
-                    console.log(res)
-                    const {code} = res.data[2]
-                    if (!code) {
-                      notifySuccess()
-                      recaptchaRef.current.reset()
-                      setStatus({state: 'Success'})
-                      return
-                    }
-                    if (code === 406) {
-                      recaptchaRef.current.reset()
-                      notifyError()
-                      setStatus({state: 'Error', error: t('Invalid Email')})
-                    }
-                  }).catch(() => {
                     recaptchaRef.current.reset()
-                    setStatus({state: 'Error', error: t('Failed')})
-                  })
+                  }, 800)
+                }}
+                onExpired={() => {
                   recaptchaRef.current.reset()
-                }, 800)
-              }}
-              onExpired={() => {
-                recaptchaRef.current.reset()
-              }}
-              onErrored={() => {
-                recaptchaRef.current.reset()
-              }}
-            />
+                }}
+                onErrored={() => {
+                  recaptchaRef.current.reset()
+                }}
+              />
 
-            <ErrorMessage name='recaptcha' />
-          </>}
+              <ErrorMessage name='recaptcha' />
+            </>}
         </FormGroup>
         <ButtonWrapper>
           <Button

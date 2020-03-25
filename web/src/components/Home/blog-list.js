@@ -1,9 +1,6 @@
 import React from 'react'
-import {Link} from 'gatsby'
 import styled from 'styled-components'
 import Blog from './blog'
-// import Heading from '../heading'
-// import Button from '../button'
 import {colors} from '../../lib/variables'
 
 const Wrapper = styled.section`

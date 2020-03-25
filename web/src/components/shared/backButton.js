@@ -62,11 +62,10 @@ const BackButton = props => {
   return (
     <Wrapper>
       {to &&
-      <StyledLink to={i18n.language === 'en' ? `${to}` : `/${i18n.language}${to}`}>
-        <Arrow />
-        {label}
-      </StyledLink>
-      }
+        <StyledLink to={i18n.language === 'en' ? `${to}` : `/${i18n.language}${to}`}>
+          <Arrow />
+          {label}
+        </StyledLink>}
     </Wrapper>
   )
 }

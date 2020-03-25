@@ -64,11 +64,11 @@ const LangSwitchBanner = ({onHideNav, onHideLangSwitchBanner}) => {
 
   return (
     <Wrapper>
-      { _w && _w.localStorage.getItem('currentLangIsBrowserLang') === 'false' && _w.localStorage.getItem('langIsSelected') !== 'true' &&
-      <Inner>
-        <Text>{t('Select a Language')}</Text>
-        <Languages>
-          {alternateLinks &&
+      {_w && _w.localStorage.getItem('currentLangIsBrowserLang') === 'false' && _w.localStorage.getItem('langIsSelected') !== 'true' &&
+        <Inner>
+          <Text>{t('Select a Language')}</Text>
+          <Languages>
+            {alternateLinks &&
             alternateLinks
               .map((link, i) => [
                 <StyledLink
@@ -85,17 +85,17 @@ const LangSwitchBanner = ({onHideNav, onHideLangSwitchBanner}) => {
                   {t(link.language)}
                 </StyledLink>
               ])}
-        </Languages>
-        <StyledIcon
-          role='button' aria-controls='Language Selector' aria-label='Close Language Selector'
-          symbol='navicon'
-          className='close'
-          onClick={() => {
-            _w && _w.localStorage.setItem('langIsSelected', 'true')
-            onHideLangSwitchBanner()
-          }} />
-      </Inner>
-      }
+          </Languages>
+          <StyledIcon
+            role='button' aria-controls='Language Selector' aria-label='Close Language Selector'
+            symbol='navicon'
+            className='close'
+            onClick={() => {
+              _w && _w.localStorage.setItem('langIsSelected', 'true')
+              onHideLangSwitchBanner()
+            }}
+          />
+        </Inner>}
     </Wrapper>
   )
 }

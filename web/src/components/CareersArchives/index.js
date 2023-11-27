@@ -25,7 +25,7 @@ const CareersArchives = props => {
       <BackButton label={t('Back to Home')} to='/' />
 
       <Header intro={intro} mainImage={mainImage} />
-      <Body bodies={[body1, body2, body3, body4]} />
+      <Body bodies={[body1, body2, body3]} />
       <Divider />
       <PositionsList nodes={positionsNodes} />
     </Wrapper>

@@ -109,7 +109,7 @@ const Footer = ({onHideNav}) => {
           </Group1>
           <Group2>
             <Email href='mail:hi@floatingdots.com'>hi@floatingdots.com</Email>
-            <Address>530 Fifth Ave,<br />Floor9 #13,<br />New York, NY 10036</Address>
+            {/* <Address>530 Fifth Ave,<br />Floor9 #13,<br />New York, NY 10036</Address> */}
             <LanguageSwitcher onHideNav={onHideNav} footer />
           </Group2>
         </Groups>

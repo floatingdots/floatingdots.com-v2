@@ -4,7 +4,7 @@ const handle404Page = require('./lib/handle404Page')
 
 const createPagePages = require('./lib/createPage')
 const {createProjectsPages, createProjectsArchives} = require('./lib/createProjects')
-const {createBlogArchives, createBlogPages} = require('./lib/createBlog')
+// const {createBlogArchives, createBlogPages} = require('./lib/createBlog')
 const {createCareersPages} = require('./lib/createCareers')
 
 const createLocaleResolvers = require('./lib/createLocaleResolvers')
@@ -21,8 +21,8 @@ exports.createPages = async ({graphql, actions, reporter}) => {
   await createPagePages(graphql, actions, reporter)
   await createProjectsArchives(graphql, actions, reporter)
   await createProjectsPages(graphql, actions, reporter)
-  await createBlogArchives(graphql, actions, reporter)
-  await createBlogPages(graphql, actions, reporter)
+  // await createBlogArchives(graphql, actions, reporter)
+  // await createBlogPages(graphql, actions, reporter)
   await createCareersPages(graphql, actions, reporter)
 }
 

@@ -62,14 +62,18 @@ function Projects (props) {
           <Title>{title.locale}</Title>
           <Icon symbol='arrow' options='forward' />
         </Heading>
-        <ImageWrapper>
-          <StyledImg
-            className='hover'
-            id={mainImage.asset.id}
-            fluid={mainImage.asset.fluid}
-            alt={(mainImage.alt && mainImage.alt.locale) || ' '}
-          />
-        </ImageWrapper>
+        {
+          mainImage && (
+            <ImageWrapper>
+              <StyledImg
+                className='hover'
+                id={mainImage.asset.id}
+                fluid={mainImage.asset.fluid}
+                alt={(mainImage.alt && mainImage.alt.locale) || ' '}
+              />
+            </ImageWrapper>
+          )
+        }
       </StyledLink>
     </Wrapper>
   )

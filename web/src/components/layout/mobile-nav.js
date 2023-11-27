@@ -65,7 +65,7 @@ const MobileNav = ({onHideNav, onShowNav, showNav}) => {
       <Inner>
         <List>
           <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('projects') ? onHideNav : undefined} to={getLocaleUrl('projects', i18n.language)}>Projects</StyledLink></Item>
-          <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') ? onHideNav : undefined} to={getLocaleUrl('blog', i18n.language)}>Blog</StyledLink></Item>
+          {/* <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('blog') ? onHideNav : undefined} to={getLocaleUrl('blog', i18n.language)}>Blog</StyledLink></Item> */}
           <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('about') ? onHideNav : undefined} to={getLocaleUrl('about', i18n.language)}>About</StyledLink></Item>
           <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('contact') ? onHideNav : undefined} to={getLocaleUrl('contact', i18n.language)}>Contact</StyledLink></Item>
           <Item><StyledLink onClick={_w && _w.location.pathname.split('/').includes('careers') ? onHideNav : undefined} to={getLocaleUrl('careers', i18n.language)}>Careers</StyledLink></Item>

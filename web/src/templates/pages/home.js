@@ -148,12 +148,12 @@ const IndexPage = props => {
       )}
       <Divider />
       <WeLove />
-      <Divider />
-      {blogNode && (
+      {/* <Divider /> */}
+      {/* {blogNode && (
         <BlogList
           nodes={blogNode}
         />
-      )}
+      )} */}
       <Divider />
       <Contact />
     </Layout>

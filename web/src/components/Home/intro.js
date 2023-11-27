@@ -59,7 +59,7 @@ const Intro = props => {
   return (
     <section>
       <Heading>
-        <Top>Design grow</Top>
+        <Top>Our design to grow</Top>
         <Bottom>
           <Your> your </Your>
           <Rotation />

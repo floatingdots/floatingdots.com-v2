@@ -26,8 +26,8 @@ const CareersArchives = props => {
 
       <Header intro={intro} mainImage={mainImage} />
       <Body bodies={[body1, body2, body3]} />
-      <Divider />
-      <PositionsList nodes={positionsNodes} />
+      {/* <Divider />
+      <PositionsList nodes={positionsNodes} /> */}
     </Wrapper>
   )
 }

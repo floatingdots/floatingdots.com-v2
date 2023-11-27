@@ -4,13 +4,13 @@
   "private": true,
   "author": "Naoto Yoshimoto <naotone@floatingdots.com>",
   "scripts": {
-    "build": "gatsby build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider gatsby build",
     "clean-cache": "gatsby clean",
-    "dev": "npm run clean-cache && gatsby develop -H 0.0.0.0",
+    "dev": "npm run clean-cache && NODE_OPTIONS=--openssl-legacy-provider gatsby develop -H 0.0.0.0",
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
-    "now-build": "gatsby build",
+    "now-build": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby build",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
@@ -18,7 +18,9 @@
     "axios": "^0.19.2",
     "formik": "2.1.4",
     "gatsby-image": "^2.3.1",
-    "gsap": "^3.2.6"
+    "gatsby-plugin-sharp": "^5.12.3",
+    "gsap": "^3.2.6",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@sanity/block-content-to-react": "^2.0.7",

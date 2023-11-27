@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
   }, () => {
     const sortedRecords = allRecords.filter(el => differenceInMinutes(parseISO(el.fields.publishedAt), new Date()) <= 0)
     if (sortedRecords.length > 0) {
-      sortedRecords.forEach((el, i) => {
+      sortedRecords.forEach((el) => {
         axios.request({
           method: 'GET',
           baseURL: deployWebhook
@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
               console.log(err)
               res.status(500).end()
             }
-            console.log(`Publisehd: ${record.get('title')}`)
+            console.log(`Published: ${record.get('title')}`)
             res.status(201).end()
           })
         }).catch(() => {

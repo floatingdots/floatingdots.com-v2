@@ -3,8 +3,8 @@
   "name": "floatingdots",
   "version": "1.0.0",
   "scripts": {
-    "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider; lerna run build --parallel",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider; lerna run dev --parallel",
     "format": "lerna run format",
     "build-studio": "lerna bootstrap && cd studio && npm run build",
     "build-web": "lerna bootstrap && (cd studio && SANITY_AUTH_TOKEN=$SANITY_DEPLOY_STUDIO_TOKEN npm run graphql-deploy) && (cd web && npm run build)",
